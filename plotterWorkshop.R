@@ -1,5 +1,4 @@
 source("dataset_factory.R")
-
 plot <- jobs_colors_independent(1000, 22) %>%
               count(fav_color, job) %>%
               ggplot()+
