@@ -1,0 +1,1001 @@
+id,fav_color,job,gender
+1,Black,Plumber,Male
+2,Black,Teacher,Female
+3,Red,Fireman,Male
+4,Black,Bus driver,Male
+5,Yellow,Bus driver,Male
+6,Green,Shopkeeper,Male
+7,Yellow,Bus driver,Male
+8,Blue,Fireman,Male
+9,Yellow,Accountant,Female
+10,Yellow,Fireman,Female
+11,Green,Bus driver,Female
+12,Yellow,Bus driver,Female
+13,Black,Teacher,Male
+14,Red,Accountant,Male
+15,Green,Teacher,Female
+16,Black,Plumber,Male
+17,Black,Teacher,Female
+18,Blue,Accountant,Male
+19,Green,Fireman,Male
+20,Green,Accountant,Male
+21,Black,Plumber,Female
+22,Blue,Shopkeeper,Male
+23,Black,Accountant,Female
+24,Black,Accountant,Female
+25,Blue,Teacher,Male
+26,Green,Accountant,Male
+27,Red,Bus driver,Female
+28,Black,Teacher,Female
+29,Green,Lawyer,Male
+30,Black,Plumber,Male
+31,Yellow,Lawyer,Female
+32,Black,Accountant,Female
+33,Red,Shopkeeper,Female
+34,Yellow,Teacher,Female
+35,Blue,Accountant,Female
+36,Black,Bus driver,Female
+37,Blue,Plumber,Male
+38,Red,Fireman,Female
+39,Black,Bus driver,Female
+40,Yellow,Teacher,Female
+41,Red,Plumber,Male
+42,Green,Accountant,Female
+43,Blue,Accountant,Female
+44,Black,Bus driver,Male
+45,Green,Fireman,Male
+46,Black,Accountant,Male
+47,Black,Bus driver,Male
+48,Yellow,Plumber,Female
+49,Black,Mathematician,Female
+50,Yellow,Shopkeeper,Female
+51,Red,Fireman,Male
+52,Red,Accountant,Male
+53,Red,Teacher,Female
+54,Yellow,Fireman,Male
+55,Blue,Accountant,Male
+56,Yellow,Fireman,Male
+57,Yellow,Fireman,Female
+58,Blue,Bus driver,Male
+59,Red,Shopkeeper,Female
+60,Green,Accountant,Male
+61,Yellow,Shopkeeper,Male
+62,Black,Plumber,Female
+63,Yellow,Teacher,Male
+64,Green,Teacher,Male
+65,Black,Accountant,Male
+66,Blue,Fireman,Male
+67,Red,Plumber,Male
+68,Black,Accountant,Female
+69,Yellow,Bus driver,Female
+70,Red,Bus driver,Male
+71,Blue,Bus driver,Female
+72,Blue,Shopkeeper,Male
+73,Red,Bus driver,Male
+74,Green,Lawyer,Male
+75,Blue,Accountant,Female
+76,Yellow,Fireman,Female
+77,Blue,Plumber,Female
+78,Red,Shopkeeper,Male
+79,Green,Teacher,Female
+80,Blue,Teacher,Male
+81,Green,Bus driver,Female
+82,Blue,Lawyer,Female
+83,Red,Accountant,Female
+84,Yellow,Fireman,Male
+85,Yellow,Fireman,Female
+86,Green,Shopkeeper,Female
+87,Red,Lawyer,Female
+88,Blue,Bus driver,Female
+89,Blue,Fireman,Male
+90,Red,Shopkeeper,Female
+91,Yellow,Plumber,Male
+92,Blue,Shopkeeper,Male
+93,Red,Fireman,Female
+94,Black,Bus driver,Female
+95,Black,Accountant,Female
+96,Yellow,Bus driver,Male
+97,Red,Bus driver,Female
+98,Green,Teacher,Female
+99,Yellow,Plumber,Male
+100,Yellow,Bus driver,Female
+101,Yellow,Teacher,Male
+102,Red,Fireman,Female
+103,Red,Bus driver,Male
+104,Red,Teacher,Male
+105,Black,Bus driver,Male
+106,Black,Fireman,Female
+107,Yellow,Fireman,Male
+108,Yellow,Bus driver,Male
+109,Green,Fireman,Male
+110,Blue,Plumber,Male
+111,Yellow,Bus driver,Male
+112,Black,Accountant,Male
+113,Yellow,Plumber,Male
+114,Green,Fireman,Male
+115,Green,Teacher,Male
+116,Green,Teacher,Male
+117,Blue,Fireman,Female
+118,Red,Fireman,Female
+119,Yellow,Teacher,Male
+120,Black,Plumber,Female
+121,Red,Fireman,Female
+122,Green,Plumber,Female
+123,Green,Bus driver,Female
+124,Green,Accountant,Male
+125,Yellow,Fireman,Male
+126,Red,Fireman,Male
+127,Black,Bus driver,Female
+128,Black,Fireman,Female
+129,Red,Teacher,Female
+130,Yellow,Bus driver,Female
+131,Black,Shopkeeper,Female
+132,Yellow,Fireman,Female
+133,Yellow,Fireman,Male
+134,Black,IT,Male
+135,Black,Bus driver,Female
+136,Green,Bus driver,Male
+137,Black,Accountant,Male
+138,Blue,Teacher,Male
+139,Yellow,Accountant,Female
+140,Yellow,Bus driver,Female
+141,Blue,Accountant,Male
+142,Blue,Plumber,Male
+143,Green,Bus driver,Male
+144,Yellow,Fireman,Female
+145,Yellow,Accountant,Female
+146,Black,Accountant,Male
+147,Blue,Shopkeeper,Male
+148,Black,Accountant,Male
+149,Red,Bus driver,Male
+150,Blue,Teacher,Female
+151,Yellow,Plumber,Male
+152,Red,Shopkeeper,Male
+153,Yellow,Lawyer,Female
+154,Red,Fireman,Female
+155,Yellow,Bus driver,Female
+156,Yellow,Plumber,Male
+157,Blue,Bus driver,Female
+158,Blue,Bus driver,Female
+159,Blue,Fireman,Female
+160,Yellow,Teacher,Male
+161,Black,Bus driver,Male
+162,Green,Bus driver,Male
+163,Yellow,Accountant,Female
+164,Blue,Bus driver,Male
+165,Green,Shopkeeper,Female
+166,Blue,Accountant,Female
+167,Green,Teacher,Female
+168,Red,Accountant,Male
+169,Blue,Fireman,Male
+170,Blue,Bus driver,Female
+171,Yellow,Teacher,Female
+172,Green,Fireman,Female
+173,Green,Plumber,Female
+174,Green,Plumber,Male
+175,Green,Teacher,Female
+176,Blue,Shopkeeper,Female
+177,Black,Bus driver,Female
+178,Green,Lawyer,Female
+179,Yellow,Bus driver,Male
+180,Yellow,Doctor,Female
+181,Black,Bus driver,Female
+182,Black,Teacher,Male
+183,Red,Bus driver,Male
+184,Red,Accountant,Male
+185,Yellow,Fireman,Female
+186,Yellow,Fireman,Male
+187,Black,Bus driver,Female
+188,Yellow,Bus driver,Female
+189,Blue,Bus driver,Male
+190,Red,Plumber,Male
+191,Blue,Bus driver,Male
+192,Yellow,Fireman,Female
+193,Blue,Accountant,Male
+194,Blue,Teacher,Male
+195,Blue,Plumber,Male
+196,Blue,Fireman,Female
+197,Green,Shopkeeper,Female
+198,Blue,Teacher,Female
+199,Yellow,Plumber,Male
+200,Yellow,Bus driver,Female
+201,Black,Bus driver,Female
+202,Green,Bus driver,Male
+203,Black,Fireman,Female
+204,Green,Accountant,Female
+205,Blue,Plumber,Female
+206,Green,Plumber,Male
+207,Black,Fireman,Female
+208,Green,Bus driver,Female
+209,Red,Accountant,Male
+210,Red,Fireman,Female
+211,Green,Plumber,Male
+212,Yellow,Lawyer,Female
+213,Red,Teacher,Female
+214,Blue,Bus driver,Male
+215,Green,Fireman,Female
+216,Black,Bus driver,Female
+217,Green,Accountant,Male
+218,Red,Bus driver,Female
+219,Green,Shopkeeper,Male
+220,Black,Plumber,Male
+221,Green,Shopkeeper,Female
+222,Blue,Fireman,Male
+223,Green,Bus driver,Male
+224,Black,Accountant,Female
+225,Red,Lawyer,Male
+226,Black,Fireman,Female
+227,Red,Bus driver,Male
+228,Blue,Teacher,Female
+229,Blue,Plumber,Male
+230,Red,Bus driver,Female
+231,Red,Fireman,Female
+232,Blue,Shopkeeper,Male
+233,Red,Accountant,Male
+234,Blue,Fireman,Male
+235,Black,Fireman,Female
+236,Black,Bus driver,Male
+237,Blue,Fireman,Male
+238,Black,Bus driver,Male
+239,Green,Bus driver,Male
+240,Green,Teacher,Male
+241,Blue,Plumber,Female
+242,Green,Bus driver,Female
+243,Blue,Fireman,Male
+244,Red,Lawyer,Female
+245,Green,Accountant,Male
+246,Green,Fireman,Female
+247,Blue,Fireman,Female
+248,Blue,Fireman,Female
+249,Green,Accountant,Female
+250,Black,Fireman,Male
+251,Red,Fireman,Female
+252,Blue,Fireman,Female
+253,Red,Accountant,Female
+254,Green,Teacher,Male
+255,Blue,Fireman,Male
+256,Yellow,Shopkeeper,Male
+257,Blue,Fireman,Female
+258,Green,Accountant,Male
+259,Green,Bus driver,Female
+260,Yellow,Plumber,Male
+261,Yellow,Fireman,Female
+262,Blue,Fireman,Male
+263,Red,Fireman,Female
+264,Black,Accountant,Male
+265,Green,Bus driver,Male
+266,Blue,Bus driver,Male
+267,Black,Plumber,Male
+268,Red,Bus driver,Female
+269,Black,Plumber,Female
+270,Black,Accountant,Male
+271,Blue,Accountant,Female
+272,Yellow,Fireman,Female
+273,Green,Accountant,Male
+274,Blue,Bus driver,Female
+275,Black,Fireman,Male
+276,Red,Fireman,Male
+277,Red,Accountant,Male
+278,Green,Fireman,Male
+279,Green,Accountant,Male
+280,Red,Accountant,Male
+281,Green,Fireman,Female
+282,Blue,Accountant,Male
+283,Blue,Accountant,Male
+284,Black,Accountant,Male
+285,Red,Shopkeeper,Male
+286,Blue,Fireman,Male
+287,Green,Fireman,Male
+288,Blue,Bus driver,Male
+289,Red,Teacher,Female
+290,Blue,Bus driver,Male
+291,Black,Teacher,Female
+292,Yellow,Accountant,Female
+293,Red,IT,Female
+294,Red,Fireman,Female
+295,Red,Fireman,Female
+296,Blue,Teacher,Male
+297,Yellow,Bus driver,Male
+298,Yellow,Accountant,Female
+299,Blue,Fireman,Female
+300,Blue,Accountant,Female
+301,Green,Fireman,Female
+302,Green,Lawyer,Male
+303,Blue,Bus driver,Male
+304,Red,Teacher,Female
+305,Black,Teacher,Male
+306,Black,Plumber,Male
+307,Red,Fireman,Male
+308,Blue,Plumber,Male
+309,Red,Plumber,Male
+310,Red,Bus driver,Male
+311,Blue,Teacher,Male
+312,Black,Fireman,Male
+313,Green,Accountant,Male
+314,Blue,Accountant,Male
+315,Red,Bus driver,Male
+316,Black,Accountant,Female
+317,Red,Teacher,Female
+318,Yellow,Bus driver,Female
+319,Black,Fireman,Female
+320,Black,Bus driver,Male
+321,Green,Accountant,Male
+322,Red,Bus driver,Male
+323,Blue,Plumber,Female
+324,Red,Plumber,Male
+325,Green,Bus driver,Male
+326,Black,Fireman,Male
+327,Red,Fireman,Male
+328,Black,Plumber,Male
+329,Yellow,Plumber,Male
+330,Yellow,Bus driver,Male
+331,Black,Bus driver,Female
+332,Blue,Accountant,Female
+333,Blue,Plumber,Female
+334,Red,Plumber,Female
+335,Yellow,Bus driver,Female
+336,Green,Fireman,Female
+337,Green,Teacher,Female
+338,Red,Accountant,Female
+339,Black,Bus driver,Male
+340,Red,Bus driver,Female
+341,Green,Fireman,Male
+342,Blue,Accountant,Male
+343,Yellow,Fireman,Male
+344,Red,Bus driver,Female
+345,Blue,Bus driver,Male
+346,Blue,Plumber,Male
+347,Black,Teacher,Female
+348,Red,Accountant,Male
+349,Black,Fireman,Male
+350,Black,Bus driver,Female
+351,Green,Accountant,Male
+352,Green,Fireman,Male
+353,Blue,Teacher,Male
+354,Blue,Accountant,Female
+355,Yellow,Fireman,Male
+356,Green,Shopkeeper,Male
+357,Yellow,Teacher,Female
+358,Black,Bus driver,Male
+359,Green,Bus driver,Male
+360,Green,Accountant,Male
+361,Green,Bus driver,Male
+362,Yellow,Fireman,Female
+363,Red,Teacher,Female
+364,Black,Bus driver,Female
+365,Yellow,Plumber,Female
+366,Green,Bus driver,Female
+367,Yellow,Accountant,Female
+368,Black,Teacher,Female
+369,Red,Plumber,Female
+370,Red,Teacher,Male
+371,Blue,Accountant,Female
+372,Red,Fireman,Female
+373,Yellow,Accountant,Female
+374,Blue,Bus driver,Female
+375,Yellow,Bus driver,Female
+376,Black,Accountant,Female
+377,Red,Accountant,Female
+378,Blue,Teacher,Female
+379,Blue,Accountant,Female
+380,Black,Lawyer,Female
+381,Green,Accountant,Male
+382,Green,Plumber,Male
+383,Red,Teacher,Male
+384,Red,Accountant,Male
+385,Green,Fireman,Male
+386,Black,Accountant,Male
+387,Blue,Accountant,Male
+388,Black,Bus driver,Female
+389,Blue,Teacher,Male
+390,Blue,Bus driver,Male
+391,Black,Accountant,Male
+392,Green,Plumber,Female
+393,Yellow,Accountant,Female
+394,Red,Bus driver,Male
+395,Yellow,Shopkeeper,Female
+396,Green,Bus driver,Male
+397,Black,Bus driver,Male
+398,Black,IT,Male
+399,Green,Bus driver,Male
+400,Blue,Bus driver,Male
+401,Blue,Bus driver,Female
+402,Green,Teacher,Female
+403,Yellow,Fireman,Male
+404,Green,Accountant,Male
+405,Black,Teacher,Male
+406,Blue,Accountant,Male
+407,Black,Accountant,Male
+408,Red,Fireman,Female
+409,Blue,Teacher,Male
+410,Red,Bus driver,Male
+411,Blue,Accountant,Male
+412,Green,Accountant,Male
+413,Red,Teacher,Female
+414,Yellow,Accountant,Female
+415,Blue,Teacher,Male
+416,Blue,Bus driver,Male
+417,Red,Fireman,Male
+418,Yellow,Teacher,Male
+419,Green,Bus driver,Female
+420,Blue,Plumber,Female
+421,Blue,Bus driver,Female
+422,Green,Bus driver,Male
+423,Black,Lawyer,Male
+424,Black,Fireman,Male
+425,Green,Bus driver,Male
+426,Blue,Lawyer,Female
+427,Green,Accountant,Male
+428,Red,Accountant,Male
+429,Yellow,Fireman,Female
+430,Green,Plumber,Female
+431,Green,Accountant,Female
+432,Green,Plumber,Male
+433,Green,Plumber,Male
+434,Blue,Fireman,Male
+435,Black,Accountant,Female
+436,Blue,Fireman,Female
+437,Green,Accountant,Male
+438,Red,Lawyer,Male
+439,Blue,Teacher,Male
+440,Green,Accountant,Male
+441,Yellow,Bus driver,Male
+442,Black,Accountant,Male
+443,Red,Plumber,Male
+444,Black,Bus driver,Female
+445,Red,Accountant,Female
+446,Green,Bus driver,Female
+447,Blue,Bus driver,Male
+448,Black,Plumber,Female
+449,Yellow,Bus driver,Female
+450,Blue,Plumber,Female
+451,Green,Plumber,Female
+452,Red,Bus driver,Male
+453,Yellow,Fireman,Female
+454,Yellow,Bus driver,Female
+455,Green,Teacher,Male
+456,Red,Plumber,Female
+457,Red,Accountant,Male
+458,Yellow,Shopkeeper,Male
+459,Black,Accountant,Male
+460,Black,Accountant,Male
+461,Red,Bus driver,Female
+462,Blue,Fireman,Male
+463,Black,Bus driver,Male
+464,Blue,Teacher,Female
+465,Blue,Fireman,Male
+466,Yellow,Bus driver,Female
+467,Red,Accountant,Male
+468,Blue,Accountant,Female
+469,Red,Accountant,Female
+470,Black,Accountant,Male
+471,Red,Fireman,Male
+472,Blue,Accountant,Male
+473,Black,Bus driver,Female
+474,Black,Plumber,Male
+475,Green,Accountant,Female
+476,Green,Bus driver,Female
+477,Green,Plumber,Male
+478,Black,Accountant,Female
+479,Blue,Bus driver,Female
+480,Yellow,Fireman,Male
+481,Red,Accountant,Male
+482,Green,Doctor,Male
+483,Black,Lawyer,Female
+484,Blue,Bus driver,Female
+485,Black,Teacher,Female
+486,Green,Bus driver,Female
+487,Black,Shopkeeper,Female
+488,Red,Lawyer,Male
+489,Blue,Shopkeeper,Female
+490,Blue,Bus driver,Female
+491,Black,Fireman,Male
+492,Green,Accountant,Male
+493,Black,Accountant,Male
+494,Green,Bus driver,Male
+495,Green,Bus driver,Male
+496,Blue,Fireman,Female
+497,Yellow,Bus driver,Female
+498,Red,Fireman,Female
+499,Blue,Accountant,Male
+500,Blue,Teacher,Male
+501,Blue,Teacher,Female
+502,Blue,Lawyer,Male
+503,Green,Shopkeeper,Female
+504,Black,Plumber,Female
+505,Blue,Accountant,Male
+506,Black,Fireman,Male
+507,Green,Bus driver,Female
+508,Blue,Accountant,Male
+509,Black,Shopkeeper,Female
+510,Red,Bus driver,Male
+511,Blue,Bus driver,Male
+512,Yellow,IT,Male
+513,Red,Fireman,Male
+514,Red,Teacher,Female
+515,Green,Plumber,Female
+516,Red,Teacher,Female
+517,Blue,Bus driver,Female
+518,Red,Accountant,Male
+519,Red,Bus driver,Male
+520,Green,Lawyer,Female
+521,Black,Fireman,Male
+522,Black,Bus driver,Female
+523,Black,Bus driver,Female
+524,Blue,Fireman,Female
+525,Yellow,Bus driver,Male
+526,Yellow,Accountant,Male
+527,Blue,Bus driver,Female
+528,Black,Fireman,Male
+529,Green,Fireman,Female
+530,Red,Fireman,Female
+531,Black,Accountant,Female
+532,Red,Plumber,Female
+533,Yellow,Accountant,Female
+534,Yellow,Fireman,Male
+535,Green,Accountant,Female
+536,Blue,Lawyer,Male
+537,Blue,Accountant,Female
+538,Green,Accountant,Male
+539,Green,Bus driver,Male
+540,Red,Fireman,Female
+541,Yellow,Plumber,Male
+542,Black,Fireman,Female
+543,Green,Teacher,Female
+544,Blue,Accountant,Male
+545,Green,Bus driver,Female
+546,Yellow,Plumber,Female
+547,Yellow,Teacher,Female
+548,Red,Fireman,Male
+549,Red,Fireman,Female
+550,Red,Fireman,Male
+551,Black,Accountant,Male
+552,Blue,Plumber,Male
+553,Yellow,Bus driver,Male
+554,Blue,Bus driver,Female
+555,Blue,Fireman,Male
+556,Blue,Fireman,Male
+557,Black,Teacher,Male
+558,Red,Bus driver,Male
+559,Black,Bus driver,Male
+560,Yellow,Bus driver,Male
+561,Yellow,Bus driver,Male
+562,Red,Doctor,Female
+563,Blue,Fireman,Female
+564,Blue,Accountant,Female
+565,Red,Teacher,Male
+566,Red,Fireman,Male
+567,Yellow,Teacher,Male
+568,Red,Doctor,Male
+569,Green,Fireman,Female
+570,Yellow,Bus driver,Female
+571,Yellow,Accountant,Female
+572,Red,Lawyer,Female
+573,Black,Accountant,Male
+574,Blue,Teacher,Male
+575,Red,Bus driver,Female
+576,Yellow,Fireman,Female
+577,Blue,Accountant,Male
+578,Blue,Teacher,Female
+579,Yellow,Lawyer,Female
+580,Green,Teacher,Female
+581,Red,Bus driver,Male
+582,Black,Accountant,Male
+583,Yellow,Bus driver,Female
+584,Yellow,Teacher,Male
+585,Red,Fireman,Female
+586,Green,Accountant,Male
+587,Black,Bus driver,Male
+588,Black,Accountant,Male
+589,Green,Bus driver,Female
+590,Yellow,Bus driver,Male
+591,Red,Teacher,Male
+592,Black,Fireman,Male
+593,Green,Shopkeeper,Female
+594,Black,Accountant,Female
+595,Black,Teacher,Male
+596,Green,Bus driver,Female
+597,Green,Bus driver,Male
+598,Red,Shopkeeper,Female
+599,Blue,Teacher,Male
+600,Green,Bus driver,Male
+601,Green,Fireman,Female
+602,Red,Fireman,Female
+603,Yellow,Fireman,Female
+604,Red,Teacher,Female
+605,Green,Bus driver,Male
+606,Green,Fireman,Female
+607,Yellow,Bus driver,Male
+608,Blue,Doctor,Female
+609,Green,Teacher,Female
+610,Green,Bus driver,Male
+611,Green,Accountant,Female
+612,Green,Bus driver,Female
+613,Yellow,Accountant,Male
+614,Red,Doctor,Male
+615,Black,Fireman,Female
+616,Black,Fireman,Male
+617,Blue,Plumber,Male
+618,Red,Fireman,Female
+619,Green,Fireman,Female
+620,Red,Lawyer,Female
+621,Green,Teacher,Male
+622,Green,Lawyer,Female
+623,Red,Lawyer,Male
+624,Yellow,Teacher,Female
+625,Blue,Plumber,Male
+626,Yellow,Fireman,Female
+627,Red,Bus driver,Female
+628,Green,Accountant,Male
+629,Yellow,Shopkeeper,Female
+630,Green,Accountant,Female
+631,Red,Accountant,Female
+632,Red,Accountant,Female
+633,Red,Bus driver,Female
+634,Red,Shopkeeper,Male
+635,Green,Fireman,Male
+636,Yellow,Fireman,Male
+637,Blue,Teacher,Male
+638,Green,Accountant,Male
+639,Black,Mathematician,Female
+640,Yellow,Plumber,Male
+641,Red,IT,Female
+642,Blue,Fireman,Female
+643,Green,Bus driver,Male
+644,Black,Shopkeeper,Male
+645,Green,Bus driver,Female
+646,Yellow,Accountant,Female
+647,Green,Accountant,Male
+648,Red,Plumber,Male
+649,Black,Accountant,Female
+650,Black,Accountant,Female
+651,Red,Fireman,Female
+652,Black,Shopkeeper,Female
+653,Black,Accountant,Female
+654,Yellow,Mathematician,Male
+655,Green,Shopkeeper,Male
+656,Green,Fireman,Male
+657,Red,Bus driver,Female
+658,Blue,Bus driver,Male
+659,Green,Bus driver,Male
+660,Red,Doctor,Male
+661,Yellow,Bus driver,Male
+662,Black,Lawyer,Female
+663,Red,Fireman,Female
+664,Black,Fireman,Male
+665,Red,Bus driver,Female
+666,Yellow,Teacher,Female
+667,Green,Fireman,Male
+668,Green,Accountant,Female
+669,Black,Shopkeeper,Female
+670,Red,Bus driver,Female
+671,Green,Teacher,Female
+672,Yellow,Accountant,Female
+673,Blue,Fireman,Female
+674,Red,Accountant,Female
+675,Blue,Accountant,Female
+676,Blue,Accountant,Male
+677,Red,Fireman,Male
+678,Red,IT,Male
+679,Red,Teacher,Female
+680,Red,Plumber,Male
+681,Green,Fireman,Male
+682,Black,Fireman,Male
+683,Yellow,Accountant,Male
+684,Black,Teacher,Male
+685,Red,Teacher,Female
+686,Black,Bus driver,Male
+687,Blue,Accountant,Female
+688,Blue,Teacher,Female
+689,Yellow,Bus driver,Male
+690,Green,Fireman,Male
+691,Yellow,Teacher,Female
+692,Blue,Accountant,Female
+693,Black,Accountant,Female
+694,Black,Plumber,Female
+695,Blue,Teacher,Female
+696,Yellow,Plumber,Female
+697,Green,Plumber,Male
+698,Black,Shopkeeper,Female
+699,Black,Fireman,Female
+700,Green,Accountant,Male
+701,Yellow,Teacher,Female
+702,Green,Teacher,Male
+703,Red,Fireman,Female
+704,Yellow,Bus driver,Female
+705,Yellow,Bus driver,Male
+706,Yellow,Bus driver,Male
+707,Blue,Teacher,Female
+708,Red,Teacher,Female
+709,Red,Fireman,Male
+710,Green,Fireman,Male
+711,Black,Accountant,Male
+712,Black,Fireman,Female
+713,Red,Fireman,Female
+714,Yellow,Plumber,Female
+715,Yellow,Bus driver,Female
+716,Yellow,Teacher,Male
+717,Red,Plumber,Female
+718,Red,Accountant,Female
+719,Blue,Accountant,Male
+720,Yellow,Fireman,Female
+721,Blue,Bus driver,Female
+722,Yellow,Fireman,Female
+723,Blue,Fireman,Male
+724,Red,Accountant,Male
+725,Red,Bus driver,Male
+726,Black,Bus driver,Female
+727,Red,Bus driver,Female
+728,Green,Fireman,Male
+729,Green,Bus driver,Female
+730,Yellow,Teacher,Male
+731,Green,Bus driver,Female
+732,Black,Bus driver,Male
+733,Black,Plumber,Female
+734,Black,Teacher,Male
+735,Blue,Fireman,Female
+736,Green,Teacher,Male
+737,Red,Accountant,Male
+738,Yellow,Plumber,Male
+739,Yellow,Plumber,Female
+740,Black,Teacher,Female
+741,Black,Bus driver,Male
+742,Green,Shopkeeper,Female
+743,Green,Accountant,Male
+744,Black,Accountant,Male
+745,Black,Bus driver,Female
+746,Green,Teacher,Male
+747,Blue,Bus driver,Male
+748,Yellow,Bus driver,Female
+749,Black,Bus driver,Male
+750,Red,Accountant,Male
+751,Red,Teacher,Female
+752,Blue,Fireman,Female
+753,Red,Accountant,Female
+754,Blue,Bus driver,Male
+755,Blue,Plumber,Male
+756,Red,Accountant,Male
+757,Green,Fireman,Male
+758,Blue,Accountant,Female
+759,Black,Accountant,Female
+760,Black,Bus driver,Female
+761,Black,Accountant,Male
+762,Yellow,Accountant,Male
+763,Blue,Lawyer,Female
+764,Blue,Accountant,Female
+765,Yellow,Lawyer,Female
+766,Yellow,Plumber,Female
+767,Black,Accountant,Male
+768,Green,Accountant,Male
+769,Green,Teacher,Male
+770,Green,Plumber,Male
+771,Green,Doctor,Female
+772,Blue,Bus driver,Male
+773,Red,Bus driver,Female
+774,Blue,Fireman,Female
+775,Yellow,Bus driver,Female
+776,Blue,Teacher,Male
+777,Black,Bus driver,Female
+778,Black,Bus driver,Male
+779,Yellow,Plumber,Female
+780,Black,Bus driver,Male
+781,Yellow,Bus driver,Male
+782,Yellow,Teacher,Female
+783,Red,Plumber,Female
+784,Blue,Accountant,Female
+785,Yellow,Bus driver,Male
+786,Blue,Bus driver,Male
+787,Red,Fireman,Female
+788,Yellow,Bus driver,Female
+789,Red,Teacher,Male
+790,Blue,Accountant,Female
+791,Black,Bus driver,Female
+792,Red,Fireman,Male
+793,Yellow,Plumber,Female
+794,Blue,Fireman,Female
+795,Green,Bus driver,Male
+796,Red,Shopkeeper,Female
+797,Red,Plumber,Male
+798,Blue,Teacher,Female
+799,Black,Doctor,Female
+800,Blue,Teacher,Female
+801,Black,Fireman,Male
+802,Black,Accountant,Male
+803,Blue,Bus driver,Female
+804,Green,Lawyer,Male
+805,Green,Bus driver,Female
+806,Blue,Bus driver,Female
+807,Green,Accountant,Female
+808,Red,Teacher,Female
+809,Red,Lawyer,Female
+810,Green,Fireman,Female
+811,Blue,IT,Male
+812,Black,Accountant,Male
+813,Green,Bus driver,Female
+814,Yellow,Bus driver,Male
+815,Yellow,Bus driver,Female
+816,Yellow,Bus driver,Female
+817,Black,Bus driver,Male
+818,Blue,Teacher,Male
+819,Blue,Teacher,Female
+820,Green,Plumber,Male
+821,Red,Bus driver,Female
+822,Yellow,Fireman,Male
+823,Red,Bus driver,Female
+824,Blue,Accountant,Male
+825,Blue,Plumber,Male
+826,Black,Teacher,Male
+827,Red,Fireman,Female
+828,Blue,Teacher,Female
+829,Red,Plumber,Female
+830,Blue,Fireman,Female
+831,Red,Accountant,Male
+832,Green,Fireman,Female
+833,Blue,Bus driver,Female
+834,Red,Accountant,Female
+835,Green,Bus driver,Male
+836,Yellow,Fireman,Male
+837,Red,Bus driver,Male
+838,Yellow,Fireman,Male
+839,Black,Accountant,Male
+840,Blue,Lawyer,Male
+841,Yellow,Plumber,Male
+842,Black,Fireman,Female
+843,Blue,Accountant,Male
+844,Green,Lawyer,Male
+845,Green,Teacher,Female
+846,Blue,Bus driver,Male
+847,Red,Fireman,Female
+848,Red,Fireman,Female
+849,Black,Fireman,Female
+850,Blue,Plumber,Male
+851,Green,Fireman,Male
+852,Yellow,Bus driver,Male
+853,Red,Accountant,Female
+854,Green,Lawyer,Male
+855,Yellow,Bus driver,Female
+856,Blue,Fireman,Female
+857,Green,Teacher,Female
+858,Black,Plumber,Male
+859,Green,Fireman,Female
+860,Black,Bus driver,Male
+861,Black,Fireman,Female
+862,Yellow,Plumber,Male
+863,Red,Fireman,Female
+864,Red,Bus driver,Male
+865,Red,Fireman,Male
+866,Black,Fireman,Male
+867,Blue,Accountant,Male
+868,Blue,Fireman,Female
+869,Green,Bus driver,Male
+870,Red,Plumber,Male
+871,Black,Shopkeeper,Male
+872,Black,Fireman,Male
+873,Blue,Fireman,Male
+874,Black,Bus driver,Female
+875,Green,Fireman,Male
+876,Yellow,Accountant,Female
+877,Blue,Accountant,Male
+878,Green,Accountant,Male
+879,Black,Shopkeeper,Female
+880,Green,Teacher,Female
+881,Black,Teacher,Male
+882,Yellow,Fireman,Female
+883,Yellow,Teacher,Male
+884,Yellow,Teacher,Female
+885,Black,Plumber,Male
+886,Blue,Fireman,Female
+887,Blue,Bus driver,Female
+888,Blue,Accountant,Female
+889,Black,Teacher,Male
+890,Black,Plumber,Female
+891,Red,Fireman,Female
+892,Green,Fireman,Female
+893,Yellow,Shopkeeper,Male
+894,Red,Accountant,Female
+895,Red,Bus driver,Male
+896,Black,Accountant,Male
+897,Red,Plumber,Female
+898,Blue,Accountant,Male
+899,Yellow,Accountant,Male
+900,Yellow,Shopkeeper,Male
+901,Blue,Plumber,Male
+902,Blue,Plumber,Female
+903,Green,Lawyer,Female
+904,Blue,Bus driver,Male
+905,Green,Teacher,Male
+906,Black,Plumber,Male
+907,Red,Teacher,Female
+908,Red,Bus driver,Female
+909,Green,Accountant,Male
+910,Blue,Doctor,Female
+911,Red,Fireman,Female
+912,Red,Accountant,Male
+913,Black,Fireman,Female
+914,Black,Accountant,Male
+915,Yellow,Plumber,Female
+916,Yellow,Teacher,Male
+917,Black,Plumber,Female
+918,Green,Plumber,Male
+919,Red,Plumber,Male
+920,Blue,Bus driver,Female
+921,Yellow,Fireman,Female
+922,Black,Plumber,Male
+923,Black,Bus driver,Female
+924,Blue,Bus driver,Female
+925,Yellow,Accountant,Male
+926,Black,Plumber,Female
+927,Blue,Accountant,Female
+928,Red,Plumber,Male
+929,Blue,Fireman,Female
+930,Green,Teacher,Female
+931,Green,Lawyer,Female
+932,Black,Teacher,Male
+933,Black,Lawyer,Male
+934,Black,Fireman,Male
+935,Yellow,Shopkeeper,Female
+936,Blue,Bus driver,Female
+937,Blue,Accountant,Female
+938,Red,Bus driver,Female
+939,Red,Plumber,Female
+940,Yellow,Bus driver,Male
+941,Green,Teacher,Male
+942,Green,Accountant,Female
+943,Blue,Teacher,Female
+944,Red,Teacher,Female
+945,Yellow,Fireman,Female
+946,Red,Accountant,Female
+947,Blue,Lawyer,Female
+948,Yellow,Teacher,Female
+949,Green,Lawyer,Male
+950,Blue,Bus driver,Female
+951,Red,Fireman,Male
+952,Green,Fireman,Male
+953,Red,Fireman,Female
+954,Yellow,Plumber,Female
+955,Red,Fireman,Male
+956,Yellow,Accountant,Female
+957,Yellow,Bus driver,Female
+958,Black,Fireman,Male
+959,Yellow,IT,Male
+960,Yellow,Teacher,Female
+961,Green,Fireman,Male
+962,Yellow,Accountant,Male
+963,Blue,Accountant,Female
+964,Black,Fireman,Female
+965,Blue,Plumber,Female
+966,Black,Teacher,Male
+967,Blue,Accountant,Female
+968,Blue,Fireman,Female
+969,Yellow,Teacher,Female
+970,Red,Accountant,Female
+971,Green,Plumber,Male
+972,Green,Accountant,Male
+973,Yellow,Bus driver,Female
+974,Green,Accountant,Male
+975,Blue,Mathematician,Female
+976,Blue,Bus driver,Female
+977,Red,Fireman,Male
+978,Red,Fireman,Male
+979,Yellow,Plumber,Female
+980,Blue,Fireman,Male
+981,Green,Fireman,Male
+982,Blue,Teacher,Female
+983,Green,Accountant,Male
+984,Yellow,Accountant,Male
+985,Green,Accountant,Male
+986,Red,Accountant,Male
+987,Black,Plumber,Male
+988,Blue,Fireman,Female
+989,Red,Plumber,Male
+990,Black,Fireman,Male
+991,Yellow,Fireman,Male
+992,Blue,Lawyer,Female
+993,Black,Teacher,Male
+994,Black,Fireman,Female
+995,Blue,Lawyer,Male
+996,Blue,Accountant,Male
+997,Green,Teacher,Female
+998,Blue,Accountant,Male
+999,Green,Accountant,Female
+1000,Blue,Lawyer,Male
