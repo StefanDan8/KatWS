@@ -68,9 +68,10 @@ disc <- function(lower_bound, upper_bound, nbins, value){
   return(LETTERS[ceiling((value-lower_bound)/thr)+1]);
 }
 
-saveAs <- function(save_as){
-  switch(saveAs, ".csv" = write_csv(ds, "Synthetic Dataframes/jobs_and_colors.csv"),
-         ".rds" =saveRDS(ds,"Synthetic Dataframes/jobs_and_colors.rds"),
-         ".tsv" = write_tsv(ds,"Synthetic Dataframes/jobs_and_colors.tsv")
+save_as <- function(dataframe, format){
+  dfAsString <- deparse1(substitute(dataframe))
+  switch(format, ".csv" = write_csv(dataframe, paste0("Dataframes/", dfAsString, ".csv")),
+         ".rds" =saveRDS(dataframe, paste0("Dataframes/", dfAsString, ".rds")),
+         ".tsv" = write_tsv(dataframe, paste0("Dataframes/", dfAsString, ".tsv"))
   );
 }
