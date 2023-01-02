@@ -12,3 +12,15 @@ RoxygenNote: 7.2.3
 Depends: 
     R (>= 2.10)
 LazyData: true
+Imports: 
+    dplyr,
+    magrittr,
+    purrr,
+    tidyr,
+    tibble,
+    readr,
+    stats,
+    MASS,
+    rlang
+Suggests: 
+   
