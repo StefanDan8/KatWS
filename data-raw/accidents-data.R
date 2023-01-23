@@ -1,7 +1,7 @@
 raw <- readr::read_csv("data-raw/dft-road-casualty-statistics-accident-2021.csv")
 guide <- readxl::read_excel("data-raw/Road-Safety-Open-Dataset-Data-Guide.xlsx")
 
-good_columns <- raw %>% dplyr::select(c(9, 10, 11, 13, 20, 21, 28, 29, 30, 31, 33))
+good_columns <- raw %>% dplyr::select(c(9, 13, 20, 21, 28, 29, 33))
 
 get_vector_guide <- function(column){
   named_vector <-  guide %>%
@@ -11,7 +11,7 @@ get_vector_guide <- function(column){
   return(named_vector)
 }
 decode <- function(dataframe){
-  columns <- colnames(dataframe)[-c(2,3,6)];
+  columns <- colnames(dataframe)[-4];
   for(column in columns){
     dataframe <- decode_column(dataframe, column)
   }
@@ -29,5 +29,8 @@ decode_column <- function(dataframe, column){
 }
 
 accidents21 <- decode(good_columns)
-
+accidents21 <- accidents21 %>%
+  dplyr::filter(!light_conditions=="Data missing or out of range" &
+                  !weather_conditions == "Data missing or out of range" &
+                  ! urban_or_rural_area == "Unallocated")
 usethis::use_data(accidents21, overwrite = TRUE)
