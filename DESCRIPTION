@@ -21,6 +21,8 @@ Imports:
     readr,
     stats,
     MASS,
-    rlang
+    rlang,
+    ggplot2,
+    infer
 Suggests: 
    
