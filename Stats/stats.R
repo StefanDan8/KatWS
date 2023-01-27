@@ -25,6 +25,34 @@
 #        geom_bar(stat = "identity") +
 #       labs(x = "Durchlauf", y = "p-Wert", title = "Simulationsbasierte p-Werte")
 
+
+get_p <- function(x,y){
+  ans <- chisq.test(x,y);
+  return(ans$p.value)
+}
+calculate_x_values <- function(sample, var1, var2){
+  n = nrow(sample);
+  report <- sample %>% dplyr::summarise(x_value = get_x({{var1}}, {{var2}}));
+}
+get_x <-  function(x,y){
+  ans <- chisq.test(x,y);
+  return(ans$statistic)
+}
+
+x_value_estimator_bootstrap <- function(dataframe, var1, var2, initial_sample_size, bootstrap_sample_size, reps, df){
+  # set.seed(42);
+  sample <- infer::rep_sample_n(dataframe, size = initial_sample_size);
+  bootstrapped <- infer::rep_sample_n(sample, size = bootstrap_sample_size, replace = TRUE, reps = reps);
+  x_values <- calculate_x_values(bootstrapped, {{var1}}, {{var2}});
+  plot(x_values%>%ggplot() +
+         geom_histogram(mapping = aes(x = x_value, y = ..density..),binwidth = 0.5)+
+         ylim(0, 0.2)+
+         stat_function(fun="dchisq", args = list(df = df)));
+  return(x_values);
+}
+
+
+
 #---------------------ONE VARIABLE FIXED, THE OTHER SAMPLED -------------------
 # works poorly
 test_no_bootstrap <- function(dataframe, var_fixed, var_sampled, sample_size, reps){
@@ -69,7 +97,8 @@ p_value_estimator_no_bootstrap <- function(dataframe, var1, var2, sample_size, r
   #return(mean(p_values$p_value));
   plot(p_values%>%ggplot(aes(x = p_value)) +
        geom_histogram(binwidth = 0.01, color = "white"));
-  return(p_values);
+  return(mean(p_values$p_value));
+  #return(p_values);
 }
 
 p_value_estimator_bootstrap <- function(dataframe, var1, var2, initial_sample_size, bootstrap_sample_size, reps){
@@ -82,22 +111,14 @@ p_value_estimator_bootstrap <- function(dataframe, var1, var2, initial_sample_si
   return(mean(p_values$p_value));
   #return(p_values);
 }
-# accidents_non_fatal <- accidents21 %>% filter(!(accident_severity == "Fatal"));
-# accidents_non_fatal_mon_fri <- accidents_non_fatal %>% dplyr::filter(!(day_of_week %in%c("Saturday", "Sunday")))
-# INDEPENDENT
-# a4 <- p_value_estimator_bootstrap(accidents_non_fatal_mon_fri, accident_severity, day_of_week, 2000, 2000, 1000)
-# DEPENDENT
-# a4 <- p_value_estimator_bootstrap(accidents_non_fatal, accident_severity, day_of_week, 2000, 2000, 1000)
-# INDEPENDENT
-# b4 <- p_value_estimator_no_bootstrap(accidents_non_fatal_mon_fri, accident_severity, day_of_week, 2000,  1000)
-# DEPENDENT
-# b4 <- p_value_estimator_no_bootstrap(accidents_non_fatal, accident_severity, day_of_week, 2000,  1000)
+accidents_non_fatal <- accidents21 %>% filter(!(accident_severity == "Fatal"));
+accidents_non_fatal_mon_fri <- accidents_non_fatal %>% dplyr::filter(!(day_of_week %in%c("Saturday", "Sunday")))
+a1 <- p_value_estimator_bootstrap(accidents_non_fatal_mon_fri, accident_severity, day_of_week, 2000, 2000, 2000)
+a2 <- p_value_estimator_bootstrap(accidents_non_fatal, accident_severity, day_of_week, 2000, 2000, 2000)
+b1 <- p_value_estimator_no_bootstrap(accidents_non_fatal_mon_fri, accident_severity, day_of_week, 2000,  1000)
+b2 <- p_value_estimator_no_bootstrap(accidents_non_fatal, accident_severity, day_of_week, 2000,  1000)
 # One can see a difference here.
 
-get_p <- function(x,y){
-  ans <- chisq.test(x,y);
-  return(ans$p.value)
-}
 
 #function takes a contingency table as argument
 # turns it into a matrix for simpler calculation
