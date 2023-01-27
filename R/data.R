@@ -2,7 +2,7 @@
 #'
 #' @description TODO: write a good description and document this properly
 #'
-#' @format his data frame has 101087 rows and the following 11 columns:
+#' @format his data frame has 101.046 rows and the following 7 columns:
 #' \describe{
 #'   \item{y}{the count for the 2-week period.}
 #'   \item{trt}{treatment, "placebo" or "progabide"}

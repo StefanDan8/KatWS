@@ -5,7 +5,7 @@
 \alias{accidents21}
 \title{Car accidents in UK in 2021}
 \format{
-his data frame has 101087 rows and the following 11 columns:
+his data frame has 101.046 rows and the following 7 columns:
 \describe{
 \item{y}{the count for the 2-week period.}
 \item{trt}{treatment, "placebo" or "progabide"}

@@ -15,7 +15,6 @@ decode <- function(dataframe){
   for(column in columns){
     dataframe <- decode_column(dataframe, column)
   }
-  dataframe[sapply(dataframe, is.character)] <- lapply(dataframe[sapply(dataframe, is.character)],as.factor)
   return(dataframe)
 }
 
@@ -29,6 +28,7 @@ decode_column <- function(dataframe, column){
 }
 
 accidents21 <- decode(good_columns)
+accidents21[,1:ncol(accidents21)] <- lapply(accidents21[,1:ncol(accidents21)],as.factor);
 accidents21 <- accidents21 %>%
   dplyr::filter(!light_conditions=="Data missing or out of range" &
                   !weather_conditions == "Data missing or out of range" &
