@@ -2,34 +2,39 @@
 % Please edit documentation in R/num_desc.R
 \name{contingency_table}
 \alias{contingency_table}
-\title{FUNCTION_TITLE}
+\title{Cross Tabulation}
 \usage{
 contingency_table(dataframe, var1, var2)
 }
 \arguments{
-\item{dataframe}{PARAM_DESCRIPTION}
+\item{dataframe}{a data frame or data frame extension (e.g. a tibble)}
 
-\item{var1}{PARAM_DESCRIPTION}
+\item{var1}{name of column in \code{dataframe}}
 
-\item{var2}{PARAM_DESCRIPTION}
+\item{var2}{name of column in \code{dataframe}}
 }
 \value{
-OUTPUT_DESCRIPTION
+\code{contingency_table()} returns a contingency table represented as
+an object of type tibble
 }
 \description{
-FUNCTION_DESCRIPTION
+\code{contingency_table()} builds a contingency table of the counts at
+each combination of values from two columns of a data frame.
 }
 \details{
-DETAILS
+the first column is given by \code{var1} and the following columns are
+named by the unique values of \code{var2}. Each cell represents the count of
+\code{var1}-\code{var2} pairs for the corresponding values.
 }
 \examples{
+contingency_table(accidents21, accident_severity, urban_or_rural_area)
 \dontrun{
-if(interactive()){
- #EXAMPLE1
- }
+# var1 and var2 must be passed as they are, without quotes or apostrophes.
+contingency_table(accidents21, "accident_severity", "urban_or_rural_area")
+# throws an error.
 }
 }
 \seealso{
-\code{\link[dplyr]{group_by}}, \code{\link[dplyr]{summarise}}, \code{\link[dplyr]{context}}
-\code{\link[tidyr]{spread}}
+\code{\link[katws]{contingency_table_scale}} is a extension of this function
+that gives the percentage the frequency of each pair among all pairs
 }
