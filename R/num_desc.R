@@ -116,9 +116,9 @@ contingency_table <- function(dataframe, var1, var2){
   ans <- dataframe %>%
     dplyr::group_by({{var1}}, {{var2}}) %>%
       dplyr::summarise(n = dplyr::n(), .groups = "drop_last") %>%
-        dplyr::ungroup( )%>%
-          tidyr::spread({{var2}}, n)
-
+        dplyr::ungroup( ) %>%
+          tidyr::spread({{var2}}, n) %>%
+            dplyr::mutate_if(is.numeric,~tidyr::replace_na(.,0))
   return(ans)
 }
 
