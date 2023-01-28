@@ -207,10 +207,10 @@ disc <- function(lower_bound, upper_bound, nbins, value){
 #' @rdname save_as
 #' @export
 #' @importFrom readr write_csv write_tsv
-save_as <- function(dataframe, format){
+save_as <- function(dataframe, format, path){
   dfAsString <- deparse1(substitute(dataframe))
-  switch(format, ".csv" = readr::write_csv(dataframe, paste0("Dataframes/", dfAsString, ".csv")),
-         ".rds" =saveRDS(dataframe, paste0("Dataframes/", dfAsString, ".rds")),
-         ".tsv" = readr::write_tsv(dataframe, paste0("Dataframes/", dfAsString, ".tsv"))
+  switch(format, ".csv" = readr::write_csv(dataframe, paste0(path, dfAsString, ".csv")),
+         ".rds" =saveRDS(dataframe, paste0(path, dfAsString, ".rds")),
+         ".tsv" = readr::write_tsv(dataframe, paste0(path, dfAsString, ".tsv"))
   );
 }
