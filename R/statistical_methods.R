@@ -8,17 +8,17 @@
 #' @param visualize PARAM_DESCRIPTION, Default: TRUE
 #' @return OUTPUT_DESCRIPTION
 #' @details DETAILS
-#' @examples 
+#' @examples
 #' \dontrun{
 #' if(interactive()){
 #'  #EXAMPLE1
 #'  }
 #' }
-#' @seealso 
+#' @seealso
 #'  \code{\link[dplyr]{pull}}
 #'  \code{\link[infer]{rep_sample_n}}, \code{\link[infer]{specify}}, \code{\link[infer]{hypothesize}}, \code{\link[infer]{generate}}, \code{\link[infer]{calculate}}
 #' @rdname test_independence
-#' @export 
+#' @export
 #' @importFrom dplyr pull
 #' @importFrom infer rep_sample_n specify hypothesise generate calculate
 test_independence <- function(dataframe, var1, var2, sample_size, reps,
@@ -33,15 +33,15 @@ test_independence <- function(dataframe, var1, var2, sample_size, reps,
     infer::specify(response = {{var1}}, explanatory = {{var2}}) %>%
     infer::hypothesise(null = "independence") %>%
     infer::generate(reps = reps, type = "permute") %>%
-    infer::calculate(stat = "Chisq")
+    infer::calculate(stat = "Chisq");
   if(visualize){
     plot(ans%>%ggplot() +
            geom_histogram(mapping = aes(x = stat, y = ..density..),binwidth = 0.5)+
            #ylim(0, 0.2)+
           # xlim(0,20)+
            stat_function(fun="dchisq", args = list(df = df))+
-           geom_vline(xintercept = x2, color = "blue")
+           geom_vline(xintercept = x2, color = "blue", size = 3)
          );
   }
-  return(ans)
+  return(ans);
 }
