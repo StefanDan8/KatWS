@@ -1,15 +1,10 @@
 #---------Plots---------#
-#Plot1 <- ggplot2::ggplot(data = accidents21)+
- # ggplot2::geom_bar(mapping = aes(x = day_of_week, fill = accident_severity), position = "dodge") +
-  #ggplot2::labs(title = "Total amount of traffic accidents in 2021 (UK)",
-#                subtitle = "Accident severity included on the plot",
- #               caption = "published by the government of the United Kingdom")+
-  #scale_fill_brewer(name = "Accident severity", palette = "Set1")+
-  #scale_y_continuous(name ="Amount of accidents")+
-  #scale_x_discrete(name = "Day of week")
 
-#' @title FUNCTION_TITLE
-#' @description FUNCTION_DESCRIPTION
+
+#' @title BARPLOT1 & BARPLOT2
+#' @description BARPLOT1 und BARPLOT2 sind Funktionen, welche Säulendiagramme erstellen.
+#' BARPLOT1 erzeugt das klassische Säulendiagramm, wogegen BARPLOT2 mittels facet_wrap das Säulendiagramm für bessere
+#' Visualisierung mit Untergruppen auftrennt.
 #' @param dataframe PARAM_DESCRIPTION
 #' @param variable PARAM_DESCRIPTION
 #' @return OUTPUT_DESCRIPTION
@@ -26,18 +21,26 @@
 #' @export#
 #' @importFrom ggplot2 ggplot geom_bar facet_wrap
 #' @importFrom magrittr %>%
-BARPLOT <- function(dataframe, var1, var2){
+BARPLOT1 <- function(dataframe, var1, var2){
   dataframe %>%
     ggplot2::ggplot() +
       ggplot2::geom_bar(mapping = ggplot2::aes(x = {{var1}}, fill = {{var2}}),
-                        position = "dodge") +
-        ggplot2::facet_wrap(vars({{var2}}), scales = "free")
+                        position = "dodge");
 }
 
 # BARPLOT(accidents21, <var1>, <var2>)
 
-#' @title FUNCTION_TITLE
-#' @description FUNCTION_DESCRIPTION
+BARPLOT2 <- function(dataframe, var1, var2){
+  dataframe %>%
+    ggplot2::ggplot() +
+    ggplot2::geom_bar(mapping = ggplot2::aes(x = {{var1}}, fill = {{var2}}),
+                      position = "dodge") +
+        ggplot2::facet_wrap(vars({{var2}}), scales = "free");
+}
+
+#' @title PIECHART
+#' @description PIECHART ist im Grunde genommen auch ein Säulendiagramm,
+#' aber durch Transformation in Polarkoordiantenn erzeugt man ein Kreisdiagramm.
 #' @param dataframe PARAM_DESCRIPTION
 #' @param variable PARAM_DESCRIPTION
 #' @return OUTPUT_DESCRIPTION
@@ -58,24 +61,25 @@ BARPLOT <- function(dataframe, var1, var2){
 #' @export
 #' @importFrom ggplot2 ggplot geom_bar coord_polar xlab ylab geom_text facet_wrap
 #' @importFrom magrittr %>%
-PIECHART <- function(dataframe, var1, var2) {
+PIECHART <- function(dataframe, var){
   dataframe %>%
-    dplyr::group_by({{var1}}, {{var2}}) %>%
-      dplyr::summarise(cnt = n(), .groups = "drop_last") %>%
-        dplyr::mutate(props1 = round(cnt/sum(cnt)*100, 3)) %>%
-          ggplot2::ggplot( aes(x = {{var1}}, fill = {{var2 }})) +
-            ggplot2::geom_bar( width = 1) +
-              ggplot2::coord_polar(theta = "y") +
-                ggplot2::xlab(NULL) +
-                  ggplot2::ylab(NULL)+
-                    geom_text(aes(y = {{var2}}, label = props1), color = "black", size=2.5)+
-                      ggplot2::facet_wrap(vars({{var1}}))
+    dplyr::group_by({{var}}) %>%
+      dplyr::summarise(cnt = n()) %>%
+        ggplot2::ggplot(ggplot2::aes(x="", y = cnt, fill = {{var}}))+
+          ggplot2::geom_bar(stat="identity")+ggplot2::coord_polar("y")+
+            ggplot2::geom_text(aes(y = cnt/3 + c(0, cumsum(cnt)[-length(cnt)]),
+                           label = scales::percent(cnt/100)), size=4);
 }
 
 # PIECHART(accidents21, <var1>, <var2>)
 
-#' @title FUNCTION_TITLE
-#' @description FUNCTION_DESCRIPTION
+#' @title COUNTPLOT
+#' @description COUNTPLOT erstellt einen Graphen für kategorische Variablen.
+#' COUNTPLOT erstellt Punkte von jeder Kombination von Werten, die
+#' von den zwei eingetragenen Variablen entnommen werden.
+#' Die Größe jedes aufgetragenen Punktes hängt von der Anzahl an Beobachtungen von den Kombinationen ab.
+#'  Je frequenter die Beobachtung, desto größer der Punkt.
+#'  Je seltener die Beobachtung, desto kleiner der Punkt.
 #' @param dataframe PARAM_DESCRIPTION
 #' @param variable PARAM_DESCRIPTION
 #' @return OUTPUT_DESCRIPTION
@@ -97,13 +101,15 @@ COUNTPLOT <- function(dataframe, var1, var2){
   dataframe %>%
     ggplot2::ggplot(aes(x = {{var1}}, y = {{var2}})) +
       ggplot2::geom_count(aes(size = after_stat(prop), group = {{var2}})) +
-        ggplot2::scale_size_area(max_size = 10)
+        ggplot2::scale_size_area(max_size = 10);
 }
 
 # COUNTPLOT(accidents21, <var1>, <var2>)
 
-#' @title FUNCTION_TITLE
-#' @description FUNCTION_DESCRIPTION
+#' @title HEATMAPS
+#' @description HEATMAPS hat die ähnliche Funktionalität wie COUNTPLOT,
+#' aber unterscheidet sich bei der Visualisierung. Hier werden keine Punkte aufgetragen,
+#' sondern gefärbte Flächen, deren Farbe die Menge an Beobachtungen der Kombinationen visualisiert.
 #' @param dataframe PARAM_DESCRIPTION
 #' @param variable PARAM_DESCRIPTION
 #' @return OUTPUT_DESCRIPTION
@@ -125,8 +131,9 @@ COUNTPLOT <- function(dataframe, var1, var2){
 HEATMAPS <- function(dataframe, var1, var2){
   dataframe %>%
     dplyr::count({{var1}}, {{var2}}) %>%
-      ggplot2::ggplot(aes(x = {{var1}}, {{var2}}, fill = n))+
-        ggplot2::geom_tile()
+      ggplot2::ggplot(ggplot2::aes(x = {{var1}}, {{var2}}, fill = n))+
+        ggplot2::geom_tile()+
+          ggplot2::scale_fill_viridis_c();
 }
 
 #HEATMAPS(accidents21, <var1>, <var2>)
