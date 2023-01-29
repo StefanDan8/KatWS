@@ -37,8 +37,6 @@ test_independence <- function(dataframe, var1, var2, sample_size, reps,
   if(visualize){
     plot(ans%>%ggplot() +
            geom_histogram(mapping = aes(x = stat, y = ..density..),binwidth = 0.5)+
-           #ylim(0, 0.2)+
-          # xlim(0,20)+
            stat_function(fun="dchisq", args = list(df = df))+
            geom_vline(xintercept = x2, color = "blue", size = 3)
          );

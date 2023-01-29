@@ -3,24 +3,36 @@
 \docType{data}
 \name{euro_startups}
 \alias{euro_startups}
-\title{Startups in Western Europe}
+\title{Start-ups in Western Europe}
 \format{
-this data frame has 7167 rows and the following 3 columns:
+This tibble contains 7167 observations and the following 3 columns:
 \describe{
-\item{y}{the count for the 2-week period.}
-\item{trt}{treatment, "placebo" or "progabide"}
-\item{post}{post treatment. 0 for no, 1 for yes}
-\item{subject}{subject id}
-\item{tj}{time}
+\item{\code{category_list}}{Field(s) of activity of the start-up (saved as chr)}
+\item{\code{status}}{current status of the start-up
+(Factor, with levels "operating", "closed", "acquired")}
+\item{\code{country_code}}{the country in which the start-up was founded
+(Factor, with levels: \cr
+"AUT" = Austria \cr
+"BEL" = Belgium \cr
+"CHE" = Switzerland \cr
+"DEU" = Germany \cr
+"FRA" = France \cr
+"GBR" = Great Britain \cr
+"IRL" = Ireland \cr
+"SWE" = Sweden)}
 }
 }
 \source{
+The data originates from a bigger dataset,
+\verb{Startup Success/Fail Dataset from Crunchbase}, which can be found on kaggle under
+the following link:
 \url{https://www.kaggle.com/datasets/yanmaksi/big-startup-secsees-fail-dataset-from-crunchbase}
 }
 \usage{
 euro_startups
 }
 \description{
-TODO: write a good description and document this properly
+This tibble contains the areas of expertise and the current status
+of start-ups founded in eight Western European countries.
 }
 \keyword{datasets}

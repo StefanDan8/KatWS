@@ -4,12 +4,17 @@
 \name{katws-package}
 \alias{katws}
 \alias{katws-package}
-\title{katws: The katws package does interesting stuff}
+\title{katws: katws}
 \description{
-What the package does (one paragraph).
+Tools for numerical, graphical and statistical analysis of categorical variable.
 }
 \author{
-\strong{Maintainer}: First Last \email{first.last@example.com} (\href{https://orcid.org/YOUR-ORCID-ID}{ORCID})
+\strong{Maintainer}: Ștefan Dan \email{stefan.dan@tum.de}
+
+Authors:
+\itemize{
+  \item Teodor-Ștefan Ghidersa
+}
 
 }
 \keyword{internal}

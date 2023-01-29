@@ -62,13 +62,14 @@ BARPLOT2 <- function(dataframe, var1, var2){
 #' @importFrom ggplot2 ggplot geom_bar coord_polar xlab ylab geom_text facet_wrap
 #' @importFrom magrittr %>%
 PIECHART <- function(dataframe, var){
+  len <- nrow(dataframe);
   dataframe %>%
     dplyr::group_by({{var}}) %>%
       dplyr::summarise(cnt = n()) %>%
         ggplot2::ggplot(ggplot2::aes(x="", y = cnt, fill = {{var}}))+
           ggplot2::geom_bar(stat="identity")+ggplot2::coord_polar("y")+
             ggplot2::geom_text(aes(y = cnt/3 + c(0, cumsum(cnt)[-length(cnt)]),
-                           label = scales::percent(cnt/100)), size=4);
+                           label = scales::percent(cnt/len)), size=4);
 }
 
 # PIECHART(accidents21, <var1>, <var2>)

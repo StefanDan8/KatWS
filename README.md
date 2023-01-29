@@ -4,17 +4,25 @@
 # katws
 
 <!-- badges: start -->
-<!-- badges: end -->
 
-%TODO The goal of katws is to be useful.
+# Überblick
+
+<!-- badges: start -->
+<!-- badges: end -->
 
 ## Installation
 
-You can install the development version of katws like so:
+<!-- badges: start -->
+
+Sie können die Entwicklungsversion von katws wie folgt installieren:
 
 ``` r
-# FILL THIS IN! HOW CAN PEOPLE INSTALL YOUR DEV PACKAGE?
+remotes::install_gitlab(repo="ge47zot/katws", 
+                        auth_token = "glpat-aEDEgsXeapej98uEMQmz",
+                        host = "gitlab.lrz.de")
 ```
+
+<!-- badges: end -->
 
 ## Example
 
