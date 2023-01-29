@@ -16,42 +16,51 @@ knitr::opts_chunk$set(
 # katws
 
 <!-- badges: start -->
+<!-- badges: end -->
 
 # Überblick
-<!-- badges: start -->
 
-<!-- badges: end -->
+
+
 ## Installation
-<!-- badges: start -->
+
 Sie können die Entwicklungsversion von katws wie folgt installieren:
 
-``` r
+``` {r, eval = FALSE}
 remotes::install_gitlab(repo="ge47zot/katws", 
                         auth_token = "glpat-aEDEgsXeapej98uEMQmz",
                         host = "gitlab.lrz.de")
 ```
-<!-- badges: end -->
-## Example
 
-This is a basic example which shows you how to solve a common problem:
-
-```{r example}
+## Explorative Analyse
+```{r}
 library(katws)
-## basic example code
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
 
-```{r cars}
-summary(cars)
+### Numerische Zusammenfassung:
+```{r}
+contingency_table(euro_startups, country_code, status)
 ```
 
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this. You could also use GitHub Actions to re-render `README.Rmd` every time you push. An example workflow can be found here: <https://github.com/r-lib/actions/tree/v1/examples>.
 
-You can also embed plots, for example:
+### Graphische Zusammenfassung:
 
-```{r pressure, echo = FALSE}
-plot(pressure)
+## Induktive Analyse
+Nehmen wir zum Beispiel an, wir denken darüber nach, ein Start-up-Unternehmen 
+zu eröffnen, und möchten anhand früherer Daten wissen, ob wir in einem 
+bestimmten Land bessere Erfolgschancen hätten.  
+
+Dazu testen wir die Hypothese, ob das Land und der Status von Unternehmen nach 
+einer bestimmten Zeit (noch in Betrieb, geschlossen oder gekauft) abhängig sind 
+oder nicht.
+
+H~0~: `country_code` und `status` sind unabhängig \
+H~1~: sie sind abhängig
+
+
+
+```{r, results = 'hide'}
+test_independence(euro_startups, country_code, status, 1000, 1000, TRUE);
 ```
 
-In that case, don't forget to commit and push the resulting figure files, so they display on GitHub and CRAN.

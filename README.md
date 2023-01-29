@@ -4,15 +4,11 @@
 # katws
 
 <!-- badges: start -->
+<!-- badges: end -->
 
 # Überblick
 
-<!-- badges: start -->
-<!-- badges: end -->
-
 ## Installation
-
-<!-- badges: start -->
 
 Sie können die Entwicklungsversion von katws wie folgt installieren:
 
@@ -22,40 +18,46 @@ remotes::install_gitlab(repo="ge47zot/katws",
                         host = "gitlab.lrz.de")
 ```
 
-<!-- badges: end -->
-
-## Example
-
-This is a basic example which shows you how to solve a common problem:
+## Explorative Analyse
 
 ``` r
 library(katws)
-## basic example code
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
+### Numerische Zusammenfassung:
 
 ``` r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
+contingency_table(euro_startups, country_code, status)
+#> # A tibble: 8 × 4
+#>   country_code acquired closed operating
+#>   <fct>           <int>  <int>     <int>
+#> 1 AUT                 8     13       106
+#> 2 BEL                15     12       170
+#> 3 CHE                20     21       273
+#> 4 DEU                88     69       864
+#> 5 FRA                70     87       933
+#> 6 GBR               222    268      3077
+#> 7 IRL                29     28       375
+#> 8 SWE                28     42       349
 ```
 
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date. `devtools::build_readme()` is handy for this. You could also
-use GitHub Actions to re-render `README.Rmd` every time you push. An
-example workflow can be found here:
-<https://github.com/r-lib/actions/tree/v1/examples>.
+### Graphische Zusammenfassung:
 
-You can also embed plots, for example:
+## Induktive Analyse
 
-<img src="man/figures/README-pressure-1.png" width="100%" />
+Nehmen wir zum Beispiel an, wir denken darüber nach, ein
+Start-up-Unternehmen zu eröffnen, und möchten anhand früherer Daten
+wissen, ob wir in einem bestimmten Land bessere Erfolgschancen hätten.
 
-In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub and CRAN.
+Dazu testen wir die Hypothese, ob das Land und der Status von
+Unternehmen nach einer bestimmten Zeit (noch in Betrieb, geschlossen
+oder gekauft) abhängig sind oder nicht.
+
+H<sub>0</sub>: `country_code` und `status` sind unabhängig  
+H<sub>1</sub>: sie sind abhängig
+
+``` r
+test_independence(euro_startups, country_code, status, 1000, 1000, TRUE);
+```
+
+<img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />

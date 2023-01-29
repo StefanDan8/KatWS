@@ -25,7 +25,6 @@ test_independence <- function(dataframe, var1, var2, sample_size, reps,
                               visualize = TRUE){
   chi2 <- chisq.test(dataframe%>%dplyr::pull({{var1}}),
                      dataframe%>%dplyr::pull({{var2}}));
-  print(chi2);
   x2 <- chi2$statistic;
   df <- chi2$parameter;
   sample <- infer::rep_sample_n(dataframe, size = sample_size);
@@ -35,10 +34,10 @@ test_independence <- function(dataframe, var1, var2, sample_size, reps,
     infer::generate(reps = reps, type = "permute") %>%
     infer::calculate(stat = "Chisq");
   if(visualize){
-    plot(ans%>%ggplot() +
-           geom_histogram(mapping = aes(x = stat, y = ..density..),binwidth = 0.5)+
-           stat_function(fun="dchisq", args = list(df = df))+
-           geom_vline(xintercept = x2, color = "blue", size = 3)
+    plot(ans%>%ggplot2::ggplot() +
+           ggplot2::geom_histogram(mapping = ggplot2::aes(x = stat, y = ..density..),binwidth = 0.5)+
+           ggplot2::stat_function(fun="dchisq", args = list(df = df))+
+           ggplot2::geom_vline(xintercept = x2, color = "blue", size = 3)
          );
   }
   return(ans);
