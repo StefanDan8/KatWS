@@ -69,7 +69,8 @@ PIECHART <- function(dataframe, var){
         ggplot2::ggplot(ggplot2::aes(x="", y = cnt, fill = {{var}}))+
           ggplot2::geom_bar(stat="identity")+ggplot2::coord_polar("y")+
             ggplot2::geom_text(aes(y = cnt/3 + c(0, cumsum(cnt)[-length(cnt)]),
-                           label = scales::percent(cnt/len)), size=4);
+                           label = scales::percent(cnt/len)),
+                           position = position_stack(vjust=0.5), size=4);
 }
 
 # PIECHART(accidents21, <var1>, <var2>)
