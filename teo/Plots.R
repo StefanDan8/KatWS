@@ -1,25 +1,27 @@
 #---------Plots---------#
 
 
-#' @title BARPLOT1 & BARPLOT2
-#' @description BARPLOT1 und BARPLOT2 sind Funktionen, welche Säulendiagramme erstellen.
-#' BARPLOT1 erzeugt das klassische Säulendiagramm, wogegen BARPLOT2 mittels facet_wrap das Säulendiagramm für bessere
-#' Visualisierung mit Untergruppen auftrennt.
-#' @param dataframe PARAM_DESCRIPTION
-#' @param variable PARAM_DESCRIPTION
-#' @return OUTPUT_DESCRIPTION
-#' @details DETAILS
+#' @title BARPLOT1
+#' @description `BARPLOT1()` generates a classical barplot
+#' @param dataframe a data frame or data frame extension (e.g. a tibble)
+#' @param var1 name of column in `dataframe`
+#' @param var2 name of column in `dataframe`
+#' @return `BARPLOT1()` returns a barplot
+#' @details With `var1` on the x-axis `BARPLOT1()` counts the total amount of the variable and
+#' it is displayed on the y-axis. With `var2`, `BARPLOT1()` splits the bars in smaller colored bars,
+#' that represent the amount of observations regarding the second variable.
 #' @examples
+#' BARPLOT1(euro_startups, status, country_code)
 #' \dontrun{
-#' if(interactive()){
-#'  #EXAMPLE1
-#'  }
+#' # var1 and var2 must be passed as they are, without quotes or apostrophes.
+#' BARPLOT1(euro_startups, "status", "country_code")
+#' # throws an error.
 #' }
 #' @seealso
-#'  \code{\link[ggplot2]{ggplot}}, \code{\link[ggplot2]{geom_bar}},\code{\link[ggplot2]{facet_wrap}}
+#'  \code{\link[ggplot2]{ggplot}}, \code{\link[ggplot2]{geom_bar}}
 #' @rdname BARPLOT
 #' @export#
-#' @importFrom ggplot2 ggplot geom_bar facet_wrap
+#' @importFrom ggplot2 ggplot geom_bar
 #' @importFrom magrittr %>%
 BARPLOT1 <- function(dataframe, var1, var2){
   dataframe %>%
@@ -30,6 +32,30 @@ BARPLOT1 <- function(dataframe, var1, var2){
 
 # BARPLOT(accidents21, <var1>, <var2>)
 
+#' @title BARPLOT2
+#' @description `BARPLOT2()` is similar to `BARPLOT1()` with an additional facet
+#' given with `facet_wrap()`
+#' @param dataframe a data frame or data frame extension (e.g. a tibble)
+#' @param var1 name of column in `dataframe`
+#' @param var2 name of column in `dataframe`
+#' @return `BARPLOT2()` returns a barplot with facets.
+#' @details In extension to `BARPLOT1()`, `BARPLOT2()` divides the plot in more
+#' subplots to gain more visibility.
+#' @examples
+#' BARPLOT2(euro_startups, status, country_code)
+#' \dontrun{
+#'  # var1 and var2 must be passed as they are, without quotes or apostrophes.
+#' BARPLOT2(euro_startups, "status", "country_code")
+#' # throws an error.
+#' }
+#' @seealso
+#' \code{\link[katws]{BARPLOT1}} is a extension of this function that has additional facets.
+#'  \code{\link[ggplot2]{ggplot}}, \code{\link[ggplot2]{geom_bar}},\code{\link[ggplot2]{facet_wrap}}
+#' @rdname BARPLOT
+#' @export
+#' @importFrom ggplot2 ggplot geom_bar facet_wrap
+#' @importFrom magrittr %>%
+#'
 BARPLOT2 <- function(dataframe, var1, var2){
   dataframe %>%
     ggplot2::ggplot() +
@@ -39,27 +65,27 @@ BARPLOT2 <- function(dataframe, var1, var2){
 }
 
 #' @title PIECHART
-#' @description PIECHART ist im Grunde genommen auch ein Säulendiagramm,
-#' aber durch Transformation in Polarkoordiantenn erzeugt man ein Kreisdiagramm.
-#' @param dataframe PARAM_DESCRIPTION
-#' @param variable PARAM_DESCRIPTION
-#' @return OUTPUT_DESCRIPTION
-#' @details DETAILS
+#' @description `PIECHART()` is a function that generates a piechart as a plot.
+#' @param dataframe  a data frame or data frame extension (e.g. a tibble)
+#' @param var name of column in `dataframe`
+#' @return returns a piechart.
+#' @details `PIECHART()` calculates the percentage of the observations of `var1`
+#' and displays it onto the plot. The piechart is a barplot with a polar-transformation.
 #' @examples
+#' PIECHART(euro_startups, status)
 #' \dontrun{
-#' if(interactive()){
-#'  #EXAMPLE1
-#'  }
+# var must be passed as it  is, without quotes or apostrophes.
+#' PIECHART(euro_startups, "status")
+#' # throws an error.
 #' }
 #' @seealso
 #' \code{\link[dplyr]{group_by}}, \code{\link[dplyr]{summmarise}},
-#' \code{\link[dplyr]{mutate}},
 #' \code{\link[ggplot2]{ggplot}}, \code{\link[ggplot2]{geom_bar}},
-#' \code{\link[ggplot2]{coord_polar}}, \code{\link[ggplot2]{xlab}},
-#' \code{\link[ggplot2]{ylab}}, \code{\link[ggplot2]{geom_text}}, \code{\link[ggplot2]{facet_wrap}}
+#' \code{\link[ggplot2]{coord_polar}},\code{\link[ggplot2]{geom_text}},
+#' \code{\link[ggplot2]{labs}}
 #' @rdname PIECHART
 #' @export
-#' @importFrom ggplot2 ggplot geom_bar coord_polar xlab ylab geom_text facet_wrap
+#' @importFrom ggplot2 ggplot geom_bar coord_polar geom_text labs
 #' @importFrom magrittr %>%
 PIECHART <- function(dataframe, var){
   len <- nrow(dataframe);
@@ -67,30 +93,31 @@ PIECHART <- function(dataframe, var){
     dplyr::group_by({{var}}) %>%
       dplyr::summarise(cnt = n()) %>%
         ggplot2::ggplot(ggplot2::aes(x="", y = cnt, fill = {{var}}))+
-          ggplot2::geom_bar(stat="identity")+ggplot2::coord_polar("y")+
-            ggplot2::geom_text(aes(y = cnt/3 + c(0, cumsum(cnt)[-length(cnt)]),
-                           label = scales::percent(cnt/len)),
-                           position = position_stack(vjust=0.5), size=4);
+          ggplot2::geom_bar(stat="identity", color = "white") +
+            ggplot2::coord_polar("y") +
+              ggplot2::geom_text(aes(label = scales::percent(cnt/len)),
+                           position = position_stack(vjust=0.5), size=4)+
+                        ggplot2::labs(x = NULL, y = NULL, fill = NULL);
 }
 
 # PIECHART(accidents21, <var1>, <var2>)
 
 #' @title COUNTPLOT
-#' @description COUNTPLOT erstellt einen Graphen für kategorische Variablen.
-#' COUNTPLOT erstellt Punkte von jeder Kombination von Werten, die
-#' von den zwei eingetragenen Variablen entnommen werden.
-#' Die Größe jedes aufgetragenen Punktes hängt von der Anzahl an Beobachtungen von den Kombinationen ab.
-#'  Je frequenter die Beobachtung, desto größer der Punkt.
-#'  Je seltener die Beobachtung, desto kleiner der Punkt.
-#' @param dataframe PARAM_DESCRIPTION
-#' @param variable PARAM_DESCRIPTION
-#' @return OUTPUT_DESCRIPTION
-#' @details DETAILS
+#' @description `COUNTPLOT()` generates a countplot as a plot.
+#' @param dataframe a data frame or data frame extension (e.g. a tibble)
+#' @param var1 name of column in `dataframe`
+#' @param var2 name of column in `dataframe`
+#' @return `COUNTPLOT()` returns a countplot
+#' @details `COUNTPLOT()` draws a point at each combination of values from the two
+#' variables `var1` and `var2`. The size of the points is mapped to the number
+#' of observations with this combinations of values. Meaning: rare observations
+#' is equal to small points and frequent observations is equal to large points.
 #' @examples
+#' COUNTPLOT(euro_startups, status, country_code)
 #' \dontrun{
-#' if(interactive()){
-#'  #EXAMPLE1
-#'  }
+#' # var1 and var2 must be passed as they are, without quotes or apostrophes.
+#' COUNTPLOT(euro_startups, "status", "country_code")
+#' # throws an error.
 #' }
 #' @seealso
 #' \code{\link[ggplot2]{ggplot}}, \code{\link[ggplot]{geom_count}},
@@ -109,20 +136,23 @@ COUNTPLOT <- function(dataframe, var1, var2){
 # COUNTPLOT(accidents21, <var1>, <var2>)
 
 #' @title HEATMAPS
-#' @description HEATMAPS hat die ähnliche Funktionalität wie COUNTPLOT,
-#' aber unterscheidet sich bei der Visualisierung. Hier werden keine Punkte aufgetragen,
-#' sondern gefärbte Flächen, deren Farbe die Menge an Beobachtungen der Kombinationen visualisiert.
-#' @param dataframe PARAM_DESCRIPTION
-#' @param variable PARAM_DESCRIPTION
-#' @return OUTPUT_DESCRIPTION
-#' @details DETAILS
+#' @description `HEATMAPS()` is a function that generates a heatmap as a plot.
+#' @param dataframe a data frame or data frame extension (e.g. a tibble)
+#' @param var1 name of column in `dataframe`
+#' @param var2 name of column in `dataframe`
+#' @return `HEATMAPS()` returns a heatmap
+#' @details `HEATMAPS()` has a similar functionality like `COUNTPLOT()`, but
+#' it differs only in visualization. It doesn't plot points,
+#' but colored areas, whose colors visualize the amount of observations of given combinations.
 #' @examples
+#' HEATMAPS(euro_startups, status, country_code)
 #' \dontrun{
-#' if(interactive()){
-#'  #EXAMPLE1
-#'  }
+#' # var1 and var2 must be passed as they are, without quotes or apostrophes.
+#' HEATMAPS(euro_startups, "status", "country_code")
+#' # throws an error.
 #' }
 #' @seealso
+#' \code{\link[katws]{COUNTPLOT}} is similar to `COUNTPLOT()`, it differs only in visualization.
 #' \code{\link[dplyr]{count}}, \code{\link[ggplot]{ggplot}}, \code{\link[ggplot]{geom_tile}}
 #' @rdname HEATMAPS
 #' @export
@@ -139,3 +169,4 @@ HEATMAPS <- function(dataframe, var1, var2){
 }
 
 #HEATMAPS(accidents21, <var1>, <var2>)
+
