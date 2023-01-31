@@ -2,8 +2,8 @@ Package: katws
 Title: katws
 Version: 1.0.0.0
 Authors@R: 
-    c(person("Ștefan", "Dan", , "stefan.dan@tum.de", role = c("aut", "cre")),
-    person("Teodor-Ștefan", "Ghidersa", role = c("aut")))
+    c(person("Ștefan", "Dan", middle = NULL, "stefan.dan@tum.de", role = c("aut", "cre")),
+    person("Teodor-Ștefan", middle = NULL, "Ghidersa", role = c("aut")))
 Description: Tools for numerical, graphical and statistical analysis of 
               categorical variable.
 License: MIT + file LICENSE

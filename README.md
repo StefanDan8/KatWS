@@ -8,6 +8,15 @@
 
 # Überblick
 
+Zusätzlich enthält `katws` Funktionen, welche Plots erstellen:
+
+- `BARPLOT1()` erzeugt ein klassisches Säulendiagramm.
+- `BARPLOT2()` erzeugt ein Säulendiagramm mit zusätzlichen Facets.
+- `PIECHART()` erzeugt ein Kreisdiagramm.
+- `COUNTPLOT()` erzeugt ein Countplot mit möglichen Parametern `prop`
+  oder `count`
+- `HEATMAPS()` erzeugt eine Heatmap.
+
 ## Installation
 
 Sie können die Entwicklungsversion von katws wie folgt installieren:
@@ -43,11 +52,52 @@ contingency_table(euro_startups, country_code, status)
 
 ### Graphische Zusammenfassung:
 
+``` r
+BARPLOT1(euro_startups, status, country_code)
+```
+
+<img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
+
+``` r
+
+BARPLOT2(euro_startups, status, country_code)
+```
+
+<img src="man/figures/README-unnamed-chunk-5-2.png" width="100%" />
+
+``` r
+
+PIECHART(euro_startups, status)
+```
+
+<img src="man/figures/README-unnamed-chunk-5-3.png" width="100%" />
+
+``` r
+
+COUNTPLOT(euro_startups, status, country_code, "prop")
+```
+
+<img src="man/figures/README-unnamed-chunk-5-4.png" width="100%" />
+
+``` r
+
+COUNTPLOT(euro_startups, status, country_code, "count")
+```
+
+<img src="man/figures/README-unnamed-chunk-5-5.png" width="100%" />
+
+``` r
+
+HEATMAPS(euro_startups, status, country_code)
+```
+
+<img src="man/figures/README-unnamed-chunk-5-6.png" width="100%" />
+
 ## Induktive Analyse
 
-Nehmen wir zum Beispiel an, wir denken darüber nach, ein
-Start-up-Unternehmen zu eröffnen, und möchten anhand früherer Daten
-wissen, ob wir in einem bestimmten Land bessere Erfolgschancen hätten.
+Angenommen wir denken darüber nach, ein Start-up-Unternehmen zu gründen.
+Dabei möchten wir anhand früherer Daten wissen, ob wir in einem
+bestimmten Land bessere Erfolgschancen hätten.
 
 Dazu testen wir die Hypothese, ob das Land und der Status von
 Unternehmen nach einer bestimmten Zeit (noch in Betrieb, geschlossen
@@ -60,4 +110,4 @@ H<sub>1</sub>: sie sind abhängig
 test_independence(euro_startups, country_code, status, 1000, 1000, TRUE);
 ```
 
-<img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />
