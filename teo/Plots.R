@@ -24,10 +24,11 @@
 #' @importFrom ggplot2 ggplot geom_bar
 #' @importFrom magrittr %>%
 BARPLOT1 <- function(dataframe, var1, var2){
-  dataframe %>%
+  ans <- dataframe %>%
     ggplot2::ggplot() +
       ggplot2::geom_bar(mapping = ggplot2::aes(x = {{var1}}, fill = {{var2}}),
                         position = "dodge");
+  return(ans)
 }
 
 # BARPLOT(accidents21, <var1>, <var2>)
@@ -57,11 +58,12 @@ BARPLOT1 <- function(dataframe, var1, var2){
 #' @importFrom magrittr %>%
 #'
 BARPLOT2 <- function(dataframe, var1, var2){
-  dataframe %>%
+ ans <-  dataframe %>%
     ggplot2::ggplot() +
     ggplot2::geom_bar(mapping = ggplot2::aes(x = {{var1}}, fill = {{var2}}),
                       position = "dodge") +
         ggplot2::facet_wrap(vars({{var2}}), scales = "free");
+ return(ans)
 }
 
 #' @title PIECHART
@@ -89,7 +91,7 @@ BARPLOT2 <- function(dataframe, var1, var2){
 #' @importFrom magrittr %>%
 PIECHART <- function(dataframe, var){
   len <- nrow(dataframe);
-  dataframe %>%
+ ans <-  dataframe %>%
     dplyr::group_by({{var}}) %>%
       dplyr::summarise(cnt = n()) %>%
         ggplot2::ggplot(ggplot2::aes(x="", y = cnt, fill = {{var}}))+
@@ -98,6 +100,7 @@ PIECHART <- function(dataframe, var){
               ggplot2::geom_text(aes(label = scales::percent(cnt/len)),
                 position = ggplot2::position_stack(vjust=0.5), size=4) +
                         ggplot2::labs(x = NULL, y = NULL, fill = NULL);
+ return(ans)
 }
 
 # PIECHART(accidents21, <var1>, <var2>)
@@ -127,10 +130,11 @@ PIECHART <- function(dataframe, var){
 #' @importFrom ggplot2 ggplot geom_count scale_size
 #' @importFrom magrittr %>%
 COUNTPLOT <- function(dataframe, var1, var2){
-  dataframe %>%
+ ans <-  dataframe %>%
     ggplot2::ggplot(aes(x = {{var1}}, y = {{var2}})) +
       ggplot2::geom_count(aes(size = after_stat(prop), group = {{var2}})) +
         ggplot2::scale_size_area(max_size = 10);
+ return(ans)
 }
 
 # COUNTPLOT(accidents21, <var1>, <var2>)
@@ -161,11 +165,12 @@ COUNTPLOT <- function(dataframe, var1, var2){
 #' @importFrom magrittr %>%
 
 HEATMAPS <- function(dataframe, var1, var2){
-  dataframe %>%
+ ans <-  dataframe %>%
     dplyr::count({{var1}}, {{var2}}) %>%
       ggplot2::ggplot(ggplot2::aes(x = {{var1}}, {{var2}}, fill = n))+
         ggplot2::geom_tile()+
           ggplot2::scale_fill_viridis_c();
+ return (ans)
 }
 
 #HEATMAPS(accidents21, <var1>, <var2>)
