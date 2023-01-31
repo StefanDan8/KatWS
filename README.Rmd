@@ -19,8 +19,13 @@ knitr::opts_chunk$set(
 <!-- badges: end -->
 
 # Überblick
+Zusätzlich enthält `katws` Funktionen, welche Plots erstellen:
 
-
+* `BARPLOT1()` erzeugt ein klassisches Säulendiagramm.
+* `BARPLOT2()` erzeugt ein Säulendiagramm mit zusätzlichen Facets.
+* `PIECHART()` erzeugt ein Kreisdiagramm.
+* `COUNTPLOT()` erzeugt ein Countplot mit möglichen Parametern `prop` oder `count`
+* `HEATMAPS()` erzeugt eine Heatmap.
 
 ## Installation
 
@@ -45,10 +50,24 @@ contingency_table(euro_startups, country_code, status)
 
 
 ### Graphische Zusammenfassung:
+```{r}
+BARPLOT1(euro_startups, status, country_code)
+
+BARPLOT2(euro_startups, status, country_code)
+
+PIECHART(euro_startups, status)
+
+COUNTPLOT(euro_startups, status, country_code, "prop")
+
+COUNTPLOT(euro_startups, status, country_code, "count")
+
+HEATMAPS(euro_startups, status, country_code)
+
+```
 
 ## Induktive Analyse
-Nehmen wir zum Beispiel an, wir denken darüber nach, ein Start-up-Unternehmen 
-zu eröffnen, und möchten anhand früherer Daten wissen, ob wir in einem 
+Angenommen wir denken darüber nach, ein Start-up-Unternehmen 
+zu gründen. Dabei möchten wir anhand früherer Daten wissen, ob wir in einem 
 bestimmten Land bessere Erfolgschancen hätten.  
 
 Dazu testen wir die Hypothese, ob das Land und der Status von Unternehmen nach 
