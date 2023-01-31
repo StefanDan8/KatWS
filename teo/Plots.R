@@ -19,7 +19,7 @@
 #' }
 #' @seealso
 #'  \code{\link[ggplot2]{ggplot}}, \code{\link[ggplot2]{geom_bar}}
-#' @rdname BARPLOT
+#' @rdname BARPLOT1
 #' @export#
 #' @importFrom ggplot2 ggplot geom_bar
 #' @importFrom magrittr %>%
@@ -51,7 +51,7 @@ BARPLOT1 <- function(dataframe, var1, var2){
 #' @seealso
 #' \code{\link[katws]{BARPLOT1}} is a extension of this function that has additional facets.
 #'  \code{\link[ggplot2]{ggplot}}, \code{\link[ggplot2]{geom_bar}},\code{\link[ggplot2]{facet_wrap}}
-#' @rdname BARPLOT
+#' @rdname BARPLOT2
 #' @export
 #' @importFrom ggplot2 ggplot geom_bar facet_wrap
 #' @importFrom magrittr %>%
