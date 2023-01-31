@@ -93,7 +93,7 @@ PIECHART <- function(dataframe, var){
           ggplot2::geom_bar(stat="identity", color = "white") +
             ggplot2::coord_polar("y") +
               ggplot2::geom_text(ggplot2::aes(label = scales::percent(cnt/len)),
-                           position = ggplot2::position_stack(vjust=0.5), size=4)+
+                           position = ggplot2::position_stack(vjust=0.5), size=3)+
                         ggplot2::labs(x = NULL, y = NULL, fill = NULL);
 }
 
