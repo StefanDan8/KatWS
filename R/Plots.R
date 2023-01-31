@@ -19,7 +19,7 @@
 #' }
 #' @seealso
 #'  \code{\link[ggplot2]{ggplot}}, \code{\link[ggplot2]{geom_bar}}
-#' @rdname BARPLOT
+#' @rdname BARPLOT1
 #' @export
 #' @importFrom magrittr %>%
 BARPLOT1 <- function(dataframe, var1, var2){
@@ -50,7 +50,7 @@ BARPLOT1 <- function(dataframe, var1, var2){
 #' @seealso
 #' \code{\link[katws]{BARPLOT1}} is a extension of this function that has additional facets.
 #'  \code{\link[ggplot2]{ggplot}}, \code{\link[ggplot2]{geom_bar}},\code{\link[ggplot2]{facet_wrap}}
-#' @rdname BARPLOT
+#' @rdname BARPLOT2
 #' @export
 #' @importFrom magrittr %>%
 #'
@@ -102,75 +102,21 @@ PIECHART <- function(dataframe, var){
 #' @param dataframe a data frame or data frame extension (e.g. a tibble)
 #' @param var1 name of column in `dataframe`
 #' @param var2 name of column in `dataframe`
-#' @return `COUNTPLOT()` returns a countplot
+#' @param stat a char for `prop` or `count`
+#' @return `COUNTPLOT()` returns a countplot with either a `prop`-parameter
+#' or `count`-parameter.
 #' @details `COUNTPLOT()` draws a point at each combination of values from the two
 #' variables `var1` and `var2`. The size of the points is mapped to the number
 #' of observations with this combinations of values. Meaning: rare observations
 #' is equal to small points and frequent observations is equal to large points.
+#' With `stat` you can decide whether to use `prop` or `count` as parameter, so
+#' that you have two possibilities of plots.
 #' @examples
-#' COUNTPLOT(euro_startups, status, country_code)
+#' COUNTPLOT(euro_startups, status, country_code, "prop")
 #' \dontrun{
 #' # var1 and var2 must be passed as they are, without quotes or apostrophes.
-#' COUNTPLOT(euro_startups, "status", "country_code")
-#' # throws an error.
-#' }
-#' @seealso
-#' \code{\link[ggplot2]{ggplot}}, \code{\link[ggplot]{geom_count}},
-#' \code{\link[ggplot]{scale_size_area}}
-#' @rdname COUNTPLOT
-#' @export
-#' @importFrom magrittr %>%
-COUNTPLOT_prop <- function(dataframe, var1, var2){
-  dataframe %>%
-    ggplot2::ggplot(ggplot2::aes(x = {{var1}}, y = {{var2}})) +
-      ggplot2::geom_count(ggplot2::aes(size = ggplot2::after_stat(prop), group = {{var2}})) +
-        ggplot2::scale_size_area(max_size = 10);
-}
-
-#' @title COUNTPLOT_count
-#' @description `COUNTPLOT()` generates a countplot as a plot.
-#' @param dataframe a data frame or data frame extension (e.g. a tibble)
-#' @param var1 name of column in `dataframe`
-#' @param var2 name of column in `dataframe`
-#' @return `COUNTPLOT()` returns a countplot
-#' @details `COUNTPLOT()` draws a point at each combination of values from the two
-#' variables `var1` and `var2`. The size of the points is mapped to the number
-#' of observations with this combinations of values. Meaning: rare observations
-#' is equal to small points and frequent observations is equal to large points.
-#' @examples
-#' COUNTPLOT(euro_startups, status, country_code)
-#' \dontrun{
-#' # var1 and var2 must be passed as they are, without quotes or apostrophes.
-#' COUNTPLOT(euro_startups, "status", "country_code")
-#' # throws an error.
-#' }
-#' @seealso
-#' \code{\link[ggplot2]{ggplot}}, \code{\link[ggplot]{geom_count}},
-#' \code{\link[ggplot]{scale_size_area}}
-#' @rdname COUNTPLOT
-#' @export
-#' @importFrom magrittr %>%
-COUNTPLOT_count <- function(dataframe, var1, var2){
-  dataframe %>%
-    ggplot2::ggplot(ggplot2::aes(x = {{var1}}, y = {{var2}})) +
-    ggplot2::geom_count() +
-    ggplot2::scale_size_area(max_size = 10);
-}
-#' @title COUNTPLOT
-#' @description `COUNTPLOT()` generates a countplot as a plot.
-#' @param dataframe a data frame or data frame extension (e.g. a tibble)
-#' @param var1 name of column in `dataframe`
-#' @param var2 name of column in `dataframe`
-#' @return `COUNTPLOT()` returns a countplot
-#' @details `COUNTPLOT()` draws a point at each combination of values from the two
-#' variables `var1` and `var2`. The size of the points is mapped to the number
-#' of observations with this combinations of values. Meaning: rare observations
-#' is equal to small points and frequent observations is equal to large points.
-#' @examples
-#' COUNTPLOT(euro_startups, status, country_code)
-#' \dontrun{
-#' # var1 and var2 must be passed as they are, without quotes or apostrophes.
-#' COUNTPLOT(euro_startups, "status", "country_code")
+#' # stat must be passed as either "prop", or "count".
+#' COUNTPLOT(euro_startups, "status", "country_code", prop)
 #' # throws an error.
 #' }
 #' @seealso
