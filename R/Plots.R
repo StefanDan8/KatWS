@@ -127,7 +127,7 @@ COUNTPLOT_prop <- function(dataframe, var1, var2){
         ggplot2::scale_size_area(max_size = 10);
 }
 
-#' @title COUNTPLOT
+#' @title COUNTPLOT_count
 #' @description `COUNTPLOT()` generates a countplot as a plot.
 #' @param dataframe a data frame or data frame extension (e.g. a tibble)
 #' @param var1 name of column in `dataframe`
@@ -188,7 +188,7 @@ COUNTPLOT <- function(dataframe, var1, var2, stat ){
   dataframe %>%
     ggplot2::ggplot(ggplot2::aes(x = {{var1}}, y = {{var2}})) +
     ggplot2::geom_count(my_aes) +
-    ggplot2::scale_size_area(max_size = 10);
+    ggplot2::scale_size_area(max_size = 10)
 }
 #' @title HEATMAPS
 #' @description `HEATMAPS()` is a function that generates a heatmap as a plot.
