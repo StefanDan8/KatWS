@@ -20,8 +20,7 @@
 #' @seealso
 #'  \code{\link[ggplot2]{ggplot}}, \code{\link[ggplot2]{geom_bar}}
 #' @rdname BARPLOT
-#' @export#
-#' @importFrom ggplot2 ggplot geom_bar
+#' @export
 #' @importFrom magrittr %>%
 BARPLOT1 <- function(dataframe, var1, var2){
   dataframe %>%
@@ -53,7 +52,6 @@ BARPLOT1 <- function(dataframe, var1, var2){
 #'  \code{\link[ggplot2]{ggplot}}, \code{\link[ggplot2]{geom_bar}},\code{\link[ggplot2]{facet_wrap}}
 #' @rdname BARPLOT
 #' @export
-#' @importFrom ggplot2 ggplot geom_bar facet_wrap
 #' @importFrom magrittr %>%
 #'
 BARPLOT2 <- function(dataframe, var1, var2){
@@ -61,7 +59,7 @@ BARPLOT2 <- function(dataframe, var1, var2){
     ggplot2::ggplot() +
     ggplot2::geom_bar(mapping = ggplot2::aes(x = {{var1}}, fill = {{var2}}),
                       position = "dodge") +
-        ggplot2::facet_wrap(vars({{var2}}), scales = "free");
+        ggplot2::facet_wrap(ggplot2::vars({{var2}}), scales = "free");
 }
 
 #' @title PIECHART
@@ -85,7 +83,6 @@ BARPLOT2 <- function(dataframe, var1, var2){
 #' \code{\link[ggplot2]{labs}}
 #' @rdname PIECHART
 #' @export
-#' @importFrom ggplot2 ggplot geom_bar coord_polar geom_text labs
 #' @importFrom magrittr %>%
 PIECHART <- function(dataframe, var){
   len <- nrow(dataframe);
@@ -95,12 +92,10 @@ PIECHART <- function(dataframe, var){
         ggplot2::ggplot(ggplot2::aes(x="", y = cnt, fill = {{var}}))+
           ggplot2::geom_bar(stat="identity", color = "white") +
             ggplot2::coord_polar("y") +
-              ggplot2::geom_text(aes(label = scales::percent(cnt/len)),
-                           position = position_stack(vjust=0.5), size=4)+
+              ggplot2::geom_text(ggplot2::aes(label = scales::percent(cnt/len)),
+                           position = ggplot2::position_stack(vjust=0.5), size=4)+
                         ggplot2::labs(x = NULL, y = NULL, fill = NULL);
 }
-
-# PIECHART(accidents21, <var1>, <var2>)
 
 #' @title COUNTPLOT
 #' @description `COUNTPLOT()` generates a countplot as a plot.
@@ -124,17 +119,77 @@ PIECHART <- function(dataframe, var){
 #' \code{\link[ggplot]{scale_size_area}}
 #' @rdname COUNTPLOT
 #' @export
-#' @importFrom ggplot2 ggplot geom_count scale_size
 #' @importFrom magrittr %>%
-COUNTPLOT <- function(dataframe, var1, var2){
+COUNTPLOT_prop <- function(dataframe, var1, var2){
   dataframe %>%
-    ggplot2::ggplot(aes(x = {{var1}}, y = {{var2}})) +
-      ggplot2::geom_count(aes(size = after_stat(prop), group = {{var2}})) +
+    ggplot2::ggplot(ggplot2::aes(x = {{var1}}, y = {{var2}})) +
+      ggplot2::geom_count(ggplot2::aes(size = ggplot2::after_stat(prop), group = {{var2}})) +
         ggplot2::scale_size_area(max_size = 10);
 }
 
-# COUNTPLOT(accidents21, <var1>, <var2>)
-
+#' @title COUNTPLOT
+#' @description `COUNTPLOT()` generates a countplot as a plot.
+#' @param dataframe a data frame or data frame extension (e.g. a tibble)
+#' @param var1 name of column in `dataframe`
+#' @param var2 name of column in `dataframe`
+#' @return `COUNTPLOT()` returns a countplot
+#' @details `COUNTPLOT()` draws a point at each combination of values from the two
+#' variables `var1` and `var2`. The size of the points is mapped to the number
+#' of observations with this combinations of values. Meaning: rare observations
+#' is equal to small points and frequent observations is equal to large points.
+#' @examples
+#' COUNTPLOT(euro_startups, status, country_code)
+#' \dontrun{
+#' # var1 and var2 must be passed as they are, without quotes or apostrophes.
+#' COUNTPLOT(euro_startups, "status", "country_code")
+#' # throws an error.
+#' }
+#' @seealso
+#' \code{\link[ggplot2]{ggplot}}, \code{\link[ggplot]{geom_count}},
+#' \code{\link[ggplot]{scale_size_area}}
+#' @rdname COUNTPLOT
+#' @export
+#' @importFrom magrittr %>%
+COUNTPLOT_count <- function(dataframe, var1, var2){
+  dataframe %>%
+    ggplot2::ggplot(ggplot2::aes(x = {{var1}}, y = {{var2}})) +
+    ggplot2::geom_count() +
+    ggplot2::scale_size_area(max_size = 10);
+}
+#' @title COUNTPLOT
+#' @description `COUNTPLOT()` generates a countplot as a plot.
+#' @param dataframe a data frame or data frame extension (e.g. a tibble)
+#' @param var1 name of column in `dataframe`
+#' @param var2 name of column in `dataframe`
+#' @return `COUNTPLOT()` returns a countplot
+#' @details `COUNTPLOT()` draws a point at each combination of values from the two
+#' variables `var1` and `var2`. The size of the points is mapped to the number
+#' of observations with this combinations of values. Meaning: rare observations
+#' is equal to small points and frequent observations is equal to large points.
+#' @examples
+#' COUNTPLOT(euro_startups, status, country_code)
+#' \dontrun{
+#' # var1 and var2 must be passed as they are, without quotes or apostrophes.
+#' COUNTPLOT(euro_startups, "status", "country_code")
+#' # throws an error.
+#' }
+#' @seealso
+#' \code{\link[ggplot2]{ggplot}}, \code{\link[ggplot]{geom_count}},
+#' \code{\link[ggplot]{scale_size_area}}
+#' @rdname COUNTPLOT
+#' @export
+#' @importFrom magrittr %>%
+COUNTPLOT <- function(dataframe, var1, var2, stat ){
+  if(!(stat =="count" || stat == "prop")){
+    warning("unrecognizes parameter. Calculating with the default statistic 'count'");
+    }
+  my_aes <- if(stat == "prop") ggplot2::aes(size = ggplot2::after_stat(prop), group = {{var2}})
+  else NULL;
+  dataframe %>%
+    ggplot2::ggplot(ggplot2::aes(x = {{var1}}, y = {{var2}})) +
+    ggplot2::geom_count(my_aes) +
+    ggplot2::scale_size_area(max_size = 10);
+}
 #' @title HEATMAPS
 #' @description `HEATMAPS()` is a function that generates a heatmap as a plot.
 #' @param dataframe a data frame or data frame extension (e.g. a tibble)
@@ -156,8 +211,6 @@ COUNTPLOT <- function(dataframe, var1, var2){
 #' \code{\link[dplyr]{count}}, \code{\link[ggplot]{ggplot}}, \code{\link[ggplot]{geom_tile}}
 #' @rdname HEATMAPS
 #' @export
-#' @importFrom dplyr count
-#' @importFrom ggplot2 ggplot geom_tile
 #' @importFrom magrittr %>%
 
 HEATMAPS <- function(dataframe, var1, var2){
@@ -168,5 +221,4 @@ HEATMAPS <- function(dataframe, var1, var2){
           ggplot2::scale_fill_viridis_c();
 }
 
-#HEATMAPS(accidents21, <var1>, <var2>)
 
