@@ -19,14 +19,21 @@
 #' }
 #' @seealso
 #'  \code{\link[ggplot2]{ggplot}}, \code{\link[ggplot2]{geom_bar}}
+<<<<<<< HEAD:R/Plots.R
 #' @rdname BARPLOT
 #' @export
+=======
+#' @rdname BARPLOT1
+#' @export#
+#' @importFrom ggplot2 ggplot geom_bar
+>>>>>>> b9b4484b2ada57e273db1763390260717a2856a9:teo/Plots.R
 #' @importFrom magrittr %>%
 BARPLOT1 <- function(dataframe, var1, var2){
-  dataframe %>%
+  ans <- dataframe %>%
     ggplot2::ggplot() +
       ggplot2::geom_bar(mapping = ggplot2::aes(x = {{var1}}, fill = {{var2}}),
                         position = "dodge");
+  return(ans)
 }
 
 # BARPLOT(accidents21, <var1>, <var2>)
@@ -50,16 +57,21 @@ BARPLOT1 <- function(dataframe, var1, var2){
 #' @seealso
 #' \code{\link[katws]{BARPLOT1}} is a extension of this function that has additional facets.
 #'  \code{\link[ggplot2]{ggplot}}, \code{\link[ggplot2]{geom_bar}},\code{\link[ggplot2]{facet_wrap}}
-#' @rdname BARPLOT
+#' @rdname BARPLOT2
 #' @export
 #' @importFrom magrittr %>%
 #'
 BARPLOT2 <- function(dataframe, var1, var2){
-  dataframe %>%
+ ans <-  dataframe %>%
     ggplot2::ggplot() +
     ggplot2::geom_bar(mapping = ggplot2::aes(x = {{var1}}, fill = {{var2}}),
                       position = "dodge") +
+<<<<<<< HEAD:R/Plots.R
         ggplot2::facet_wrap(ggplot2::vars({{var2}}), scales = "free");
+=======
+        ggplot2::facet_wrap(vars({{var2}}), scales = "free");
+ return(ans)
+>>>>>>> b9b4484b2ada57e273db1763390260717a2856a9:teo/Plots.R
 }
 
 #' @title PIECHART
@@ -80,21 +92,31 @@ BARPLOT2 <- function(dataframe, var1, var2){
 #' \code{\link[dplyr]{group_by}}, \code{\link[dplyr]{summmarise}},
 #' \code{\link[ggplot2]{ggplot}}, \code{\link[ggplot2]{geom_bar}},
 #' \code{\link[ggplot2]{coord_polar}},\code{\link[ggplot2]{geom_text}},
-#' \code{\link[ggplot2]{labs}}
+#' \code{\link[ggplot2]{labs}}, \code{\link[ggplot2]{position_stack}}
 #' @rdname PIECHART
 #' @export
+<<<<<<< HEAD:R/Plots.R
+=======
+#' @importFrom ggplot2 ggplot geom_bar coord_polar geom_text labs position_stack
+>>>>>>> b9b4484b2ada57e273db1763390260717a2856a9:teo/Plots.R
 #' @importFrom magrittr %>%
 PIECHART <- function(dataframe, var){
   len <- nrow(dataframe);
-  dataframe %>%
+ ans <-  dataframe %>%
     dplyr::group_by({{var}}) %>%
       dplyr::summarise(cnt = n()) %>%
         ggplot2::ggplot(ggplot2::aes(x="", y = cnt, fill = {{var}}))+
           ggplot2::geom_bar(stat="identity", color = "white") +
             ggplot2::coord_polar("y") +
+<<<<<<< HEAD:R/Plots.R
               ggplot2::geom_text(ggplot2::aes(label = scales::percent(cnt/len)),
                            position = ggplot2::position_stack(vjust=0.5), size=4)+
+=======
+              ggplot2::geom_text(aes(label = scales::percent(cnt/len)),
+                position = ggplot2::position_stack(vjust=0.5), size=4) +
+>>>>>>> b9b4484b2ada57e273db1763390260717a2856a9:teo/Plots.R
                         ggplot2::labs(x = NULL, y = NULL, fill = NULL);
+ return(ans)
 }
 
 #' @title COUNTPLOT
@@ -120,11 +142,19 @@ PIECHART <- function(dataframe, var){
 #' @rdname COUNTPLOT
 #' @export
 #' @importFrom magrittr %>%
+<<<<<<< HEAD:R/Plots.R
 COUNTPLOT_prop <- function(dataframe, var1, var2){
   dataframe %>%
     ggplot2::ggplot(ggplot2::aes(x = {{var1}}, y = {{var2}})) +
       ggplot2::geom_count(ggplot2::aes(size = ggplot2::after_stat(prop), group = {{var2}})) +
+=======
+COUNTPLOT <- function(dataframe, var1, var2){
+ ans <-  dataframe %>%
+    ggplot2::ggplot(aes(x = {{var1}}, y = {{var2}})) +
+      ggplot2::geom_count(aes(size = after_stat(prop), group = {{var2}})) +
+>>>>>>> b9b4484b2ada57e273db1763390260717a2856a9:teo/Plots.R
         ggplot2::scale_size_area(max_size = 10);
+ return(ans)
 }
 
 #' @title COUNTPLOT
@@ -214,11 +244,12 @@ COUNTPLOT <- function(dataframe, var1, var2, stat ){
 #' @importFrom magrittr %>%
 
 HEATMAPS <- function(dataframe, var1, var2){
-  dataframe %>%
+ ans <-  dataframe %>%
     dplyr::count({{var1}}, {{var2}}) %>%
       ggplot2::ggplot(ggplot2::aes(x = {{var1}}, {{var2}}, fill = n))+
         ggplot2::geom_tile()+
           ggplot2::scale_fill_viridis_c();
+ return (ans)
 }
 
 
