@@ -82,10 +82,10 @@ BARPLOT2 <- function(dataframe, var1, var2){
 #' \code{\link[dplyr]{group_by}}, \code{\link[dplyr]{summmarise}},
 #' \code{\link[ggplot2]{ggplot}}, \code{\link[ggplot2]{geom_bar}},
 #' \code{\link[ggplot2]{coord_polar}},\code{\link[ggplot2]{geom_text}},
-#' \code{\link[ggplot2]{labs}}
+#' \code{\link[ggplot2]{labs}}, \code{\link[ggplot2]{position_stack}}
 #' @rdname PIECHART
 #' @export
-#' @importFrom ggplot2 ggplot geom_bar coord_polar geom_text labs
+#' @importFrom ggplot2 ggplot geom_bar coord_polar geom_text labs position_stack
 #' @importFrom magrittr %>%
 PIECHART <- function(dataframe, var){
   len <- nrow(dataframe);
@@ -96,7 +96,7 @@ PIECHART <- function(dataframe, var){
           ggplot2::geom_bar(stat="identity", color = "white") +
             ggplot2::coord_polar("y") +
               ggplot2::geom_text(aes(label = scales::percent(cnt/len)),
-                           position = position_stack(vjust=0.5), size=4)+
+                position = ggplot2::position_stack(vjust=0.5), size=4) +
                         ggplot2::labs(x = NULL, y = NULL, fill = NULL);
 }
 
