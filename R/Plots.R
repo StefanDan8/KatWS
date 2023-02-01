@@ -88,7 +88,7 @@ PIECHART <- function(dataframe, var){
   len <- nrow(dataframe);
   dataframe %>%
     dplyr::group_by({{var}}) %>%
-      dplyr::summarise(cnt = n()) %>%
+      dplyr::summarise(cnt = dplyr::n()) %>%
         ggplot2::ggplot(ggplot2::aes(x="", y = .data$cnt, fill = {{var}}))+
           ggplot2::geom_bar(stat="identity", color = "white") +
             ggplot2::coord_polar("y") +

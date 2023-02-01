@@ -9,11 +9,11 @@
 Tools for numerical, graphical and statistical analysis of categorical variable.
 }
 \author{
-\strong{Maintainer}: Ștefan Dan \email{stefan.dan@tum.de}
+\strong{Maintainer}: Htefan Dan \email{stefan.dan@tum.de}
 
 Authors:
 \itemize{
-  \item Teodor-Ștefan Ghidersa
+  \item Teodor-Htefan Ghidersa
 }
 
 }

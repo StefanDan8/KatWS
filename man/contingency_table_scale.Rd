@@ -4,7 +4,7 @@
 \alias{contingency_table_scale}
 \title{FUNCTION_TITLE}
 \usage{
-contingency_table_scale(dataframe, var1, var2)
+contingency_table_scale(dataframe, var1, var2, all = FALSE)
 }
 \arguments{
 \item{dataframe}{PARAM_DESCRIPTION}
@@ -12,6 +12,8 @@ contingency_table_scale(dataframe, var1, var2)
 \item{var1}{PARAM_DESCRIPTION}
 
 \item{var2}{PARAM_DESCRIPTION}
+
+\item{all}{Param}
 }
 \value{
 OUTPUT_DESCRIPTION
@@ -32,5 +34,4 @@ if(interactive()){
 \seealso{
 \code{\link[dplyr]{group_by}}, \code{\link[dplyr]{summarise}}, \code{\link[dplyr]{mutate}}, \code{\link[dplyr]{select}}
 \code{\link[tidyr]{spread}}
-\code{\link[tibble]{add_column}}
 }

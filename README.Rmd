@@ -20,6 +20,15 @@ knitr::opts_chunk$set(
 <!-- badges: end -->
 
 # Überblick
+
+`katws` ist ein Paket, das Funktionen zur explorativen Analyse von (kategorischen) 
+Daten und zum Testen von Hypothesen (Unabhängigkeit Test) bereitstellt.
+Diese Funktionen können an zwei im Paket enthaltenen Datensätzen getested werden:
+
+* `accidents21` -- Daten über die Autounfälle in Großbritannien im Jahr 2021
+* `euro_startups` -- Daten über die Start-ups in den Top 8 europäischen Ländern 
+nach Anzahl der Startups. 
+
 Zusätzlich enthält `katws` Funktionen, welche Plots erstellen:
 
 * `BARPLOT1()` erzeugt ein klassisches Säulendiagramm.
@@ -28,9 +37,31 @@ Zusätzlich enthält `katws` Funktionen, welche Plots erstellen:
 * `COUNTPLOT()` erzeugt ein Countplot mit möglichen Parametern `prop` oder `count`
 * `HEATMAPS()` erzeugt eine Heatmap.
 
+Um die Funktionalität des Pakets zu veranschaulichen, werden wir den Datensatz 
+`euro_startups` analysieren. 
+
+### `euro_startups`
+Die Daten stammen aus einem größeren Datensatz, 
+_Startup Success/Fail Dataset from Crunchbase_, zu finden auf _kaggle_ unter 
+folgendem Link:
+<https://www.kaggle.com/datasets/yanmaksi/big-startup-secsees-fail-dataset-from-crunchbase>
+Der Datensatz wurde über den folgenden Code generiert:
+```{r, eval = FALSE}
+startup <- read_csv("data-raw/startup.csv");
+startup <- dplyr::select(startup, c("category_list", "status", "country_code"));
+euro_startups <- dplyr::filter(startup, !status == "ipo" &
+   country_code %in% c("AUT", "BEL", "CHE", "DEU", "FRA", "GBR", "IRL", "SWE") &
+   !is.na(category_list));
+euro_startups[,2:3] = lapply(euro_startups[, 2:3], as.factor);
+
+```
+
+Bevor wir mit unserer Analyse beginnen, lassen Sie uns sehen, wie wir unser Paket
+installieren können.
+
 ## Installation
 
-Sie können die Entwicklungsversion von katws wie folgt installieren:
+Die neuste Version von `katws` kann wie folgt installiert werden:
 
 ``` {r, eval = FALSE}
 remotes::install_gitlab(repo="ge47zot/katws", 
@@ -39,15 +70,57 @@ remotes::install_gitlab(repo="ge47zot/katws",
 ```
 
 ## Explorative Analyse
+
+Jetzt sind wir bereit, die Daten zu untersuchen.
 ```{r}
 library(katws)
 ```
 
+Werfen wir einen ersten Blick auf den Datensatz.
+```{r}
+euro_startups
+```
+`status` und `country_code` sind kategoriale Variablen (Factor). `category_list`,
+das die Bereiche darstellt, in denen die Start-ups tätig sind, kann ebenfalls als
+kategorisch angesehen werden, obwohl, da viele nicht nur in einem Bereich tätig sind,
+es als `chr` gelassen wird, um Anfragen wie die folgenden einfacher zu verwenden:
+```{r}
+euro_startups %>% dplyr::filter(stringr::str_detect(.data$category_list, "Software"))
+  
+```
+Im Folgenden werden wir uns mehr für die Spalten `status` und `country_code` 
+interessieren. 
 
 ### Numerische Zusammenfassung:
 ```{r}
 contingency_table(euro_startups, country_code, status)
 ```
+Wie wir sehen, gibt es weitaus mehr Beobachtungen von Start-ups in Großbritannien,
+Frankreich und Deutschland als in den anderen fünf Ländern.
+Daher könnte es hilfreich sein, die Prozentsätze jedes Status in jedem Land zu sehen.
+
+Dafür verwenden wir die `contingency_table_scale` Funktion. 
+```{r}
+contingency_table_scale(euro_startups, country_code, status)
+```
+Bemerkung: In einigen Fällen könnte man Prozentsätze relativ zu allen beobachteten 
+Daten wünschen. Daher kann man in `contingency_table_scale` den Parameter `all` 
+auf true setzen:
+```{r, eval=FALSE}
+contingency_table_scale(euro_startups, country_code, status, all = TRUE)
+```
+Das gibt uns jetzt jedoch keine neuen Erkenntnisse.
+
+Aus der Tabelle können wir ersehen, dass es eine sehr kleine Varianz in der 
+`operating` Spalte und eine relativ kleine Varianz in der `acquired` Spalte.
+In Österreich und Schweden scheint der Anteil geschlossener Start-ups jedoch
+besonders hocher zu sein.
+Daher werfen wir die Frage auf:
+Hängen die Chancen der Start-ups vom Land ab?
+Ob die beiden Merkmale `country_code` und `status` voneinander abhängig sind, 
+werden wir später testen.
+
+
 
 
 ### Graphische Zusammenfassung:
