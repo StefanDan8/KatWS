@@ -19,11 +19,10 @@ Imports:
     purrr,
     tidyr,
     tibble,
-    readr,
     stats,
-    MASS,
     rlang,
     ggplot2,
-    infer
+    infer,
+    scales
 Suggests: 
    

@@ -40,6 +40,6 @@ COUNTPLOT(euro_startups, "status", "country_code", prop)
 }
 }
 \seealso{
-\code{\link[ggplot2]{ggplot}}, \code{\link[ggplot]{geom_count}},
-\code{\link[ggplot]{scale_size_area}}
+\code{\link[ggplot2]{ggplot}}, \code{\link[ggplot2]{geom_count}},
+\code{\link[ggplot2]{scale_size_area}}
 }

@@ -154,8 +154,8 @@ contingency_table_scale <- function(dataframe, var1, var2){
     dplyr::group_by({{var1}}, {{var2}}) %>%
       dplyr::summarise(n = n(),.groups = "drop_last") %>%
         dplyr::mutate(prop = n/total) %>%
-          dplyr::select({{var1}}, {{var2}}, prop) %>%
-            tidyr::spread({{var2}}, prop) %>%
+          dplyr::select({{var1}}, {{var2}}, .data$prop) %>%
+            tidyr::spread({{var2}}, .data$prop) %>%
               dplyr::ungroup()
 
   return(ans)

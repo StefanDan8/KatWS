@@ -77,7 +77,7 @@ BARPLOT2 <- function(dataframe, var1, var2){
 #' # throws an error.
 #' }
 #' @seealso
-#' \code{\link[dplyr]{group_by}}, \code{\link[dplyr]{summmarise}},
+#' \code{\link[dplyr]{group_by}}, \code{\link[dplyr]{summarise}},
 #' \code{\link[ggplot2]{ggplot}}, \code{\link[ggplot2]{geom_bar}},
 #' \code{\link[ggplot2]{coord_polar}},\code{\link[ggplot2]{geom_text}},
 #' \code{\link[ggplot2]{labs}}
@@ -89,10 +89,10 @@ PIECHART <- function(dataframe, var){
   dataframe %>%
     dplyr::group_by({{var}}) %>%
       dplyr::summarise(cnt = n()) %>%
-        ggplot2::ggplot(ggplot2::aes(x="", y = cnt, fill = {{var}}))+
+        ggplot2::ggplot(ggplot2::aes(x="", y = .data$cnt, fill = {{var}}))+
           ggplot2::geom_bar(stat="identity", color = "white") +
             ggplot2::coord_polar("y") +
-              ggplot2::geom_text(ggplot2::aes(label = scales::percent(cnt/len)),
+              ggplot2::geom_text(ggplot2::aes(label = scales::percent(.data$cnt/len)),
                            position = ggplot2::position_stack(vjust=0.5), size=3)+
                         ggplot2::labs(x = NULL, y = NULL, fill = NULL);
 }
@@ -120,8 +120,8 @@ PIECHART <- function(dataframe, var){
 #' # throws an error.
 #' }
 #' @seealso
-#' \code{\link[ggplot2]{ggplot}}, \code{\link[ggplot]{geom_count}},
-#' \code{\link[ggplot]{scale_size_area}}
+#' \code{\link[ggplot2]{ggplot}}, \code{\link[ggplot2]{geom_count}},
+#' \code{\link[ggplot2]{scale_size_area}}
 #' @rdname COUNTPLOT
 #' @export
 #' @importFrom magrittr %>%
@@ -154,7 +154,7 @@ COUNTPLOT <- function(dataframe, var1, var2, stat ){
 #' }
 #' @seealso
 #' \code{\link[katws]{COUNTPLOT}} is similar to `COUNTPLOT()`, it differs only in visualization.
-#' \code{\link[dplyr]{count}}, \code{\link[ggplot]{ggplot}}, \code{\link[ggplot]{geom_tile}}
+#' \code{\link[dplyr]{count}}, \code{\link[ggplot2]{ggplot}}, \code{\link[ggplot2]{geom_tile}}
 #' @rdname HEATMAPS
 #' @export
 #' @importFrom magrittr %>%

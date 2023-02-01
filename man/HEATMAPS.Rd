@@ -34,5 +34,5 @@ HEATMAPS(euro_startups, "status", "country_code")
 }
 \seealso{
 \code{\link[katws]{COUNTPLOT}} is similar to \code{COUNTPLOT()}, it differs only in visualization.
-\code{\link[dplyr]{count}}, \code{\link[ggplot]{ggplot}}, \code{\link[ggplot]{geom_tile}}
+\code{\link[dplyr]{count}}, \code{\link[ggplot2]{ggplot}}, \code{\link[ggplot2]{geom_tile}}
 }

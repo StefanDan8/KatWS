@@ -29,7 +29,7 @@ PIECHART(euro_startups, "status")
 }
 }
 \seealso{
-\code{\link[dplyr]{group_by}}, \code{\link[dplyr]{summmarise}},
+\code{\link[dplyr]{group_by}}, \code{\link[dplyr]{summarise}},
 \code{\link[ggplot2]{ggplot}}, \code{\link[ggplot2]{geom_bar}},
 \code{\link[ggplot2]{coord_polar}},\code{\link[ggplot2]{geom_text}},
 \code{\link[ggplot2]{labs}}
