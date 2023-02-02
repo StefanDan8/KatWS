@@ -11,7 +11,7 @@
 `katws` ist ein Paket, das Funktionen zur explorativen Analyse von
 (kategorischen) Daten und zum Testen von Hypothesen (Unabhängigkeit
 Test) bereitstellt. Diese Funktionen können an zwei im Paket enthaltenen
-Datensätzen getested werden:
+Datensätzen getestet werden:
 
 - `accidents21` – Daten über die Autounfälle in Großbritannien im Jahr
   2021
@@ -46,8 +46,8 @@ euro_startups <- dplyr::filter(startup, !status == "ipo" &
 euro_startups[,2:3] = lapply(euro_startups[, 2:3], as.factor);
 ```
 
-Bevor wir mit unserer Analyse beginnen, lassen Sie uns sehen, wie wir
-unser Paket installieren können.
+Bevor wir mit unserer Analyse beginnen, lasst uns sehen, wie wir unser
+Paket installieren können.
 
 ## Installation
 
@@ -154,8 +154,8 @@ contingency_table_scale(euro_startups, country_code, status)
 ```
 
 Bemerkung: In einigen Fällen könnte man Prozentsätze relativ zu allen
-beobachteten Daten wünschen. Daher kann man in `contingency_table_scale`
-den Parameter `all` auf true setzen:
+beobachteten Daten wünschen. Daher kann man in den Parameter `all` auf
+true setzen:
 
 ``` r
 contingency_table_scale(euro_startups, country_code, status, all = TRUE)
@@ -165,8 +165,8 @@ Das gibt uns jetzt jedoch keine neuen Erkenntnisse.
 
 Aus der Tabelle können wir ersehen, dass es eine sehr kleine Varianz in
 der `operating` Spalte und eine relativ kleine Varianz in der `acquired`
-Spalte. In Österreich und Schweden scheint der Anteil geschlossener
-Start-ups jedoch besonders hocher zu sein. Daher werfen wir die Frage
+Spalte gibt. In Österreich und Schweden scheint der Anteil geschlossener
+Start-ups jedoch besonders höher zu sein. Daher werfen wir die Frage
 auf: Hängen die Chancen der Start-ups vom Land ab? Ob die beiden
 Merkmale `country_code` und `status` voneinander abhängig sind, werden
 wir später testen.
@@ -179,40 +179,65 @@ BARPLOT1(euro_startups, status, country_code)
 
 <img src="man/figures/README-unnamed-chunk-10-1.png" width="100%" />
 
-``` r
+Dieses Säulendiagramm zeigt uns die Anzahl aller erworbenen
+(`acquired`), aller geschlossenen (`closed`) sowie aller laufenden
+(`operating`) Start-ups verteilt auf Österreich (`AUT`), Belgien ( `BEL`
+), der Schweiz (`CHE`), Deutschland (`DE`), Frankreich (`FRA`),
+Großbritannien (`GBR`), Irland (`IRL`) und Schweden (`SWE`). Man erkennt
+insbesondere, dass `GBR` in allen Kategorien von `status` dominiert.
+Außerdem ist es aus dem Diagramm ersichtlich, dass sehr viele Start-ups
+weiterhin im Betrieb sind.
 
+``` r
 BARPLOT2(euro_startups, status, country_code)
 ```
 
-<img src="man/figures/README-unnamed-chunk-10-2.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-11-1.png" width="100%" />
+
+In diesem Diagramm erhalten wir neben den gleichen Informationen vom
+ersten Diagramm außerdem Zusatzinformation: Zuerst sind die Prozentsätze
+von `acquired`, `closed` und `operating` in jedem Land nahezu gleich.
+Außnahmen sind `DEU` und `BEL`, wo sogar einwenig mehr Start-ups den
+Status `acquired` haben als `closed`.
 
 ``` r
-
 PIECHART(euro_startups, status)
 ```
 
-<img src="man/figures/README-unnamed-chunk-10-3.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-12-1.png" width="100%" />
+
+Hier sind nochmal klar die Prozentsätze von `acquired`, `closed` und
+`operating` dargestellt.
 
 ``` r
-
 COUNTPLOT(euro_startups, status, country_code, "prop")
 ```
 
-<img src="man/figures/README-unnamed-chunk-10-4.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-13-1.png" width="100%" />
+
+Dieses Diagramm ist die grafische Darstellung von
+`contingency_table_scale()`. Es stellt genau die Prozentsätze aller
+`status`-Werte in jedem Land dar.
 
 ``` r
-
 COUNTPLOT(euro_startups, status, country_code, "count")
 ```
 
-<img src="man/figures/README-unnamed-chunk-10-5.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-14-1.png" width="100%" />
+
+Hier erhalten wir eine grafische Variante, welches uns auch `BARPLOT1()`
+liefert. In diesem Fall kann man auch nur die Informationen aus
+`BARPLOT1()` herausnehmen, obwohl es visuell sogar schlechter ist.
 
 ``` r
-
 HEATMAPS(euro_startups, status, country_code)
 ```
 
-<img src="man/figures/README-unnamed-chunk-10-6.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-15-1.png" width="100%" />
+
+Heatmaps sind eine visuelle Variante von `COUNTPLOT()`, die ähnliche
+Resultate darstellt. Hier ist das Diagramm nur von wenig Nutzen, da der
+Großteil an Fläche mit der fast selben Farbe gefärbt ist.
 
 ## Induktive Analyse
 
@@ -231,4 +256,4 @@ H<sub>1</sub>: sie sind abhängig
 test_independence(euro_startups, country_code, status, 1000, 1000, TRUE);
 ```
 
-<img src="man/figures/README-unnamed-chunk-11-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-16-1.png" width="100%" />

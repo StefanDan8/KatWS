@@ -23,7 +23,7 @@ knitr::opts_chunk$set(
 
 `katws` ist ein Paket, das Funktionen zur explorativen Analyse von (kategorischen) 
 Daten und zum Testen von Hypothesen (Unabhängigkeit Test) bereitstellt.
-Diese Funktionen können an zwei im Paket enthaltenen Datensätzen getested werden:
+Diese Funktionen können an zwei im Paket enthaltenen Datensätzen getestet werden:
 
 * `accidents21` -- Daten über die Autounfälle in Großbritannien im Jahr 2021
 * `euro_startups` -- Daten über die Start-ups in den Top 8 europäischen Ländern 
@@ -56,7 +56,7 @@ euro_startups[,2:3] = lapply(euro_startups[, 2:3], as.factor);
 
 ```
 
-Bevor wir mit unserer Analyse beginnen, lassen Sie uns sehen, wie wir unser Paket
+Bevor wir mit unserer Analyse beginnen, lasst uns sehen, wie wir unser Paket
 installieren können.
 
 ## Installation
@@ -104,7 +104,7 @@ Dafür verwenden wir die `contingency_table_scale` Funktion.
 contingency_table_scale(euro_startups, country_code, status)
 ```
 Bemerkung: In einigen Fällen könnte man Prozentsätze relativ zu allen beobachteten 
-Daten wünschen. Daher kann man in `contingency_table_scale` den Parameter `all` 
+Daten wünschen. Daher kann man in den Parameter `all` 
 auf true setzen:
 ```{r, eval=FALSE}
 contingency_table_scale(euro_startups, country_code, status, all = TRUE)
@@ -112,9 +112,9 @@ contingency_table_scale(euro_startups, country_code, status, all = TRUE)
 Das gibt uns jetzt jedoch keine neuen Erkenntnisse.
 
 Aus der Tabelle können wir ersehen, dass es eine sehr kleine Varianz in der 
-`operating` Spalte und eine relativ kleine Varianz in der `acquired` Spalte.
+`operating` Spalte und eine relativ kleine Varianz in der `acquired` Spalte gibt.
 In Österreich und Schweden scheint der Anteil geschlossener Start-ups jedoch
-besonders hocher zu sein.
+besonders höher zu sein.
 Daher werfen wir die Frage auf:
 Hängen die Chancen der Start-ups vom Land ab?
 Ob die beiden Merkmale `country_code` und `status` voneinander abhängig sind, 
@@ -126,18 +126,46 @@ werden wir später testen.
 ### Graphische Zusammenfassung:
 ```{r}
 BARPLOT1(euro_startups, status, country_code)
-
-BARPLOT2(euro_startups, status, country_code)
-
-PIECHART(euro_startups, status)
-
-COUNTPLOT(euro_startups, status, country_code, "prop")
-
-COUNTPLOT(euro_startups, status, country_code, "count")
-
-HEATMAPS(euro_startups, status, country_code)
-
 ```
+
+Dieses Säulendiagramm zeigt uns die Anzahl aller erworbenen (`acquired`), aller geschlossenen (`closed`) sowie aller laufenden (`operating`) Start-ups verteilt auf Österreich (`AUT`), Belgien ( `BEL` ), der Schweiz (`CHE`), Deutschland (`DE`), Frankreich (`FRA`), Großbritannien (`GBR`), Irland (`IRL`) und Schweden (`SWE`). 
+Man erkennt insbesondere, dass `GBR` in allen Kategorien von `status` dominiert.
+Außerdem ist es aus dem Diagramm ersichtlich, dass sehr viele Start-ups weiterhin im Betrieb sind. 
+
+```{r}
+BARPLOT2(euro_startups, status, country_code)
+```
+
+In diesem Diagramm erhalten wir neben den gleichen Informationen vom ersten Diagramm außerdem Zusatzinformation:
+Zuerst sind die Prozentsätze von `acquired`, `closed` und `operating` in jedem Land nahezu gleich.
+Außnahmen sind `DEU` und `BEL`, wo sogar einwenig mehr Start-ups den Status `acquired` haben als `closed`.
+
+```{r}
+PIECHART(euro_startups, status)
+```
+
+Hier sind nochmal klar die Prozentsätze von `acquired`, `closed` und `operating`
+dargestellt.
+
+```{r}
+COUNTPLOT(euro_startups, status, country_code, "prop")
+```
+
+Dieses Diagramm ist die grafische Darstellung von `contingency_table_scale()`. Es stellt genau die Prozentsätze aller `status`-Werte in jedem Land dar.
+
+```{r}
+COUNTPLOT(euro_startups, status, country_code, "count")
+```
+
+Hier erhalten wir eine grafische Variante, welches uns auch `BARPLOT1()` liefert.
+In diesem Fall kann man auch nur die Informationen aus `BARPLOT1()` herausnehmen, obwohl es visuell sogar schlechter ist.
+
+```{r}
+HEATMAPS(euro_startups, status, country_code)
+```
+
+Heatmaps sind eine visuelle Variante von `COUNTPLOT()`, die ähnliche Resultate darstellt. Hier ist das Diagramm nur von wenig Nutzen, da der Großteil an Fläche mit der fast selben Farbe gefärbt ist.
+
 
 ## Induktive Analyse
 Angenommen wir denken darüber nach, ein Start-up-Unternehmen 
