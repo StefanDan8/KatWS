@@ -1,14 +1,34 @@
 #' Car accidents in UK in 2021
 #'
-#' @description TODO: write a good description and document this properly
+#' @description This tibble contains information about the car accidents
+#' registered in the United Kindgom in 2021
 #'
-#' @format this data frame has 101.046 rows and the following 7 columns:
+#' @format the tibble has 101.046 rows and the following 7 columns:
 #' \describe{
-#'   \item{y}{the count for the 2-week period.}
-#'   \item{trt}{treatment, "placebo" or "progabide"}
-#'   \item{post}{post treatment. 0 for no, 1 for yes}
-#'   \item{subject}{subject id}
-#'   \item{tj}{time}
+#'   \item{`accident_severity`}{The severity of the accident
+#'   (Factor, with levels "Slight", "Serious", "Fatal")}
+#'   \item{`day_of_week`}{
+#'   The weekday of the accident
+#'   (Factor, with levels "Monday", "Tuesday", ... ,"Sunday")}
+#'   \item{`road_type`}{
+#'   Type of road
+#'   (Factor, with levels "Single carriageway", "Dual carriageway",
+#'   "One way street", "Slip road", "Roundabout", "Unknown")}
+#'   \item{`speed_limit`}{
+#'   Maximum speed limit in miles/hour in the place of accident
+#'   (Factor, with levels "20", "30", ... , "70")}
+#'   \item{`light_conditions`}{
+#'   Light conditions at time of accident
+#'   (Factor, with levels "Daylight", "Darkness - no lighting",
+#'   "Darkness - lights unlit", "Darkness - lights lit", "Darkness - lighting unknown")}
+#'   \item{`weather_conditions`}{
+#'   Weather conditions at time of accident
+#'   (Factor, with levels "Fine + high winds", "Fine no high winds", "Fog or mist",
+#'   "Other", "Raining + high winds", "Raining no high winds", "Snowing + high winds",
+#'   "Snowing no high winds", "Unknown")}
+#'   \item{`urban_or_rural_area`}{
+#'   Whether the accident happened in a rural or urban area
+#'   (Factor, with levels "Urban", "Rural")}
 #' }
 #' @source \url{https://www.data.gov.uk/dataset/cb7ae6f0-4be6-4935-9277-47e5ce24a11f/road-safety-data}
 "accidents21"

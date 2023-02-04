@@ -2,34 +2,47 @@
 % Please edit documentation in R/num_desc.R
 \name{uniques_per_var}
 \alias{uniques_per_var}
-\title{FUNCTION_TITLE}
+\title{Variable discovery}
 \usage{
 uniques_per_var(dataframe, var1, var2)
 }
 \arguments{
-\item{dataframe}{PARAM_DESCRIPTION}
+\item{dataframe}{a data frame or data frame extension (e.g. a tibble)}
 
-\item{var1}{PARAM_DESCRIPTION}
+\item{var1}{name of column in \code{dataframe}}
 
-\item{var2}{PARAM_DESCRIPTION}
+\item{var2}{name of column in \code{dataframe}}
 }
 \value{
-OUTPUT_DESCRIPTION
+\code{uniques_per_value()} returns an object of type tibble.
+\itemize{
+\item{First column, named \verb{<var1>}}{ is made of the unique values
+of the column passed through \code{var1} (type \code{chr})}
+\item{Second column, named \verb{values_of_<var1>}}{ contains lists
+of all unique values corresponding to each value in the first column
+(type \code{list})}
+\item{Third column, named \code{display}}{ a sorted string of the
+corresponding list in second column (type \code{chr})}
+}
 }
 \description{
-FUNCTION_DESCRIPTION
+\code{uniques_per_var()} creates a tibble which displays all unique
+values of a column corresponding to the observations in another column.
 }
 \details{
-DETAILS
+The function is very useful for exploring a data set and, depending
+on the data, it can be a nice way of illustrating pairs of columns.
 }
 \examples{
+# Here we display each car model of every manufacturer present in the `mpg`
+#data set from the `ggplot2` package.
+uniques_per_var(ggplot2::mpg, manufacturer, model)
 \dontrun{
-if(interactive()){
- #EXAMPLE1
- }
+# var1 and var2 must be passed as they are, without quotes or apostrophes.
+ uniques_per_var(ggplot2::mpg, "manufacturer", "model")
+# throws an error.
 }
 }
 \seealso{
-\code{\link[dplyr]{group_by}}, \code{\link[dplyr]{summarise}}, \code{\link[dplyr]{mutate}}
-\code{\link[purrr]{map}}
+\code{\link[ggplot2]{mpg}}
 }

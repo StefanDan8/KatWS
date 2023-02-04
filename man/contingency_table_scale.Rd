@@ -2,36 +2,44 @@
 % Please edit documentation in R/num_desc.R
 \name{contingency_table_scale}
 \alias{contingency_table_scale}
-\title{FUNCTION_TITLE}
+\title{Cross Tabulation with Percentages}
 \usage{
 contingency_table_scale(dataframe, var1, var2, all = FALSE)
 }
 \arguments{
-\item{dataframe}{PARAM_DESCRIPTION}
+\item{dataframe}{a data frame or data frame extension (e.g. a tibble)}
 
-\item{var1}{PARAM_DESCRIPTION}
+\item{var1}{name of column in \code{dataframe}}
 
-\item{var2}{PARAM_DESCRIPTION}
+\item{var2}{name of column in \code{dataframe}}
 
-\item{all}{Param}
+\item{all}{whether the percentages are relative to the entire \code{dataframe}
+(\code{all = TRUE}) or to \code{var1}.}
 }
 \value{
-OUTPUT_DESCRIPTION
+\code{contingency_table_scale()} returns a contingency table represented as
+an object of type tibble.
 }
 \description{
-FUNCTION_DESCRIPTION
+\code{contingency_table_scale()} builds a contingency table of the
+percentages of each pair. If the parameter \code{all} is set to TRUE, then the
+percentages are relative to the entire data frame. Otherwise, they are relative
+to each value given in the \code{var1} parameter.
 }
 \details{
-DETAILS
+The first column is given by \code{var1} and the following columns are
+named by the unique values of \code{var2}. Each cell represents the percentage of
+\code{var1}-\code{var2} pairs for the corresponding values.
 }
 \examples{
+contingency_table_scale(euro_startups, country_code, status, all = FALSE)
+contingency_table_scale(euro_startups, country_code, status, all = TRUE)
 \dontrun{
-if(interactive()){
- #EXAMPLE1
- }
+# var1 and var2 must be passed as they are, without quotes or apostrophes.
+contingency_table_scale(euro_startups, "country_code", "status", all = FALSE)
+# throws an error.
 }
 }
 \seealso{
-\code{\link[dplyr]{group_by}}, \code{\link[dplyr]{summarise}}, \code{\link[dplyr]{mutate}}, \code{\link[dplyr]{select}}
-\code{\link[tidyr]{spread}}
+\code{\link[katws]{contingency_table}}
 }
