@@ -36,7 +36,7 @@ Um die Funktionalität des Pakets zu veranschaulichen, werden wir den Datensatz
 Die Daten stammen aus einem größeren Datensatz, 
 _Startup Success/Fail Dataset from Crunchbase_, zu finden auf _kaggle_ unter 
 folgendem Link:
-<https://www.kaggle.com/datasets/yanmaksi/big-startup-secsees-fail-dataset-from-crunchbase>
+<https://www.kaggle.com/datasets/yanmaksi/big-startup-secsees-fail-dataset-from-crunchbase>.
 Der Datensatz wurde über den folgenden Code generiert:
 ```{r generation_code , eval = FALSE}
 startup <- read_csv("data-raw/startup.csv");
@@ -89,7 +89,7 @@ contingency_table(euro_startups, country_code, status)
 ```
 Wie wir sehen, gibt es weitaus mehr Beobachtungen von Start-ups in Großbritannien,
 Frankreich und Deutschland als in den anderen fünf Ländern.
-Daher könnte es hilfreich sein, die Prozentsätze jedes Status in jedem Land zu sehen.
+Daher könnte es hilfreich sein, die Prozentsätze von `status` in jedem Land zu sehen.
 
 Dafür verwenden wir die `contingency_table_scale` Funktion. 
 ```{r contingency_scale_false}

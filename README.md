@@ -25,7 +25,7 @@ Datensatz `euro_startups` analysieren.
 
 Die Daten stammen aus einem größeren Datensatz, *Startup Success/Fail
 Dataset from Crunchbase*, zu finden auf *kaggle* unter folgendem Link:
-<https://www.kaggle.com/datasets/yanmaksi/big-startup-secsees-fail-dataset-from-crunchbase>
+<https://www.kaggle.com/datasets/yanmaksi/big-startup-secsees-fail-dataset-from-crunchbase>.
 Der Datensatz wurde über den folgenden Code generiert:
 
 ``` r
@@ -124,7 +124,7 @@ contingency_table(euro_startups, country_code, status)
 
 Wie wir sehen, gibt es weitaus mehr Beobachtungen von Start-ups in
 Großbritannien, Frankreich und Deutschland als in den anderen fünf
-Ländern. Daher könnte es hilfreich sein, die Prozentsätze jedes Status
+Ländern. Daher könnte es hilfreich sein, die Prozentsätze von `status`
 in jedem Land zu sehen.
 
 Dafür verwenden wir die `contingency_table_scale` Funktion.
@@ -268,16 +268,16 @@ test_independence(euro_startups, country_code, status, 1000, 1000, TRUE);
     #> # A tibble: 1,000 × 2
     #>    replicate  stat
     #>        <int> <dbl>
-    #>  1         1  7.97
-    #>  2         2 20.3 
-    #>  3         3 10.2 
-    #>  4         4  6.66
-    #>  5         5 17.8 
-    #>  6         6 11.0 
-    #>  7         7  8.54
-    #>  8         8  5.36
-    #>  9         9  6.46
-    #> 10        10  8.05
+    #>  1         1 17.3 
+    #>  2         2 20.9 
+    #>  3         3 10.5 
+    #>  4         4  8.31
+    #>  5         5  9.91
+    #>  6         6  7.96
+    #>  7         7 13.3 
+    #>  8         8 13.3 
+    #>  9         9 15.9 
+    #> 10        10 21.8 
     #> # … with 990 more rows
 
 Wir sehen, dass der berechnete Chi-Quadrat-Wert unter der Annahme der
@@ -308,16 +308,16 @@ test_independence(accidents21, accident_severity, day_of_week, 1000, 1000, TRUE)
     #> # A tibble: 1,000 × 2
     #>    replicate  stat
     #>        <int> <dbl>
-    #>  1         1  9.61
-    #>  2         2  7.29
-    #>  3         3 10.8 
-    #>  4         4  5.90
-    #>  5         5 12.2 
-    #>  6         6 14.4 
-    #>  7         7  9.74
-    #>  8         8 12.2 
-    #>  9         9  9.99
-    #> 10        10 10.6 
+    #>  1         1 15.1 
+    #>  2         2 10.2 
+    #>  3         3  7.21
+    #>  4         4 15.5 
+    #>  5         5  4.78
+    #>  6         6 10.8 
+    #>  7         7 18.8 
+    #>  8         8  9.58
+    #>  9         9  4.92
+    #> 10        10  5.30
     #> # … with 990 more rows
 
 In diesem Fall sehen wir, dass der berechnete Chi-Quadrat-Wert weit von
