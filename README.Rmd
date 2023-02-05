@@ -29,14 +29,6 @@ Diese Funktionen können an zwei im Paket enthaltenen Datensätzen getestet werd
 * `euro_startups` -- Daten über die Start-ups in den Top 8 europäischen Ländern 
 nach Anzahl der Startups. 
 
-Zusätzlich enthält `katws` Funktionen, welche Plots erstellen:
-
-* `BARPLOT1()` erzeugt ein klassisches Säulendiagramm.
-* `BARPLOT2()` erzeugt ein Säulendiagramm mit zusätzlichen Facets.
-* `PIECHART()` erzeugt ein Kreisdiagramm.
-* `COUNTPLOT()` erzeugt ein Countplot mit möglichen Parametern `prop` oder `count`
-* `HEATMAPS()` erzeugt eine Heatmap.
-
 Um die Funktionalität des Pakets zu veranschaulichen, werden wir den Datensatz 
 `euro_startups` analysieren. 
 
@@ -46,7 +38,7 @@ _Startup Success/Fail Dataset from Crunchbase_, zu finden auf _kaggle_ unter
 folgendem Link:
 <https://www.kaggle.com/datasets/yanmaksi/big-startup-secsees-fail-dataset-from-crunchbase>
 Der Datensatz wurde über den folgenden Code generiert:
-```{r, eval = FALSE}
+```{r generation_code , eval = FALSE}
 startup <- read_csv("data-raw/startup.csv");
 startup <- dplyr::select(startup, c("category_list", "status", "country_code"));
 euro_startups <- dplyr::filter(startup, !status == "ipo" &
@@ -63,7 +55,7 @@ installieren können.
 
 Die neuste Version von `katws` kann wie folgt installiert werden:
 
-``` {r, eval = FALSE}
+``` {r installation , eval = FALSE}
 remotes::install_gitlab(repo="ge47zot/katws", 
                         auth_token = "glpat-aEDEgsXeapej98uEMQmz",
                         host = "gitlab.lrz.de")
@@ -72,19 +64,19 @@ remotes::install_gitlab(repo="ge47zot/katws",
 ## Explorative Analyse
 
 Jetzt sind wir bereit, die Daten zu untersuchen.
-```{r}
+```{r library}
 library(katws)
 ```
 
 Werfen wir einen ersten Blick auf den Datensatz.
-```{r}
+```{r startups}
 euro_startups
 ```
 `status` und `country_code` sind kategoriale Variablen (Factor). `category_list`,
 das die Bereiche darstellt, in denen die Start-ups tätig sind, kann ebenfalls als
 kategorisch angesehen werden, obwohl, da viele nicht nur in einem Bereich tätig sind,
 es als `chr` gelassen wird, um Anfragen wie die folgenden einfacher zu verwenden:
-```{r}
+```{r query}
 euro_startups %>% dplyr::filter(stringr::str_detect(.data$category_list, "Software"))
   
 ```
@@ -92,7 +84,7 @@ Im Folgenden werden wir uns mehr für die Spalten `status` und `country_code`
 interessieren. 
 
 ### Numerische Zusammenfassung:
-```{r}
+```{r contingency}
 contingency_table(euro_startups, country_code, status)
 ```
 Wie wir sehen, gibt es weitaus mehr Beobachtungen von Start-ups in Großbritannien,
@@ -100,13 +92,13 @@ Frankreich und Deutschland als in den anderen fünf Ländern.
 Daher könnte es hilfreich sein, die Prozentsätze jedes Status in jedem Land zu sehen.
 
 Dafür verwenden wir die `contingency_table_scale` Funktion. 
-```{r}
+```{r contingency_scale_false}
 contingency_table_scale(euro_startups, country_code, status)
 ```
 Bemerkung: In einigen Fällen könnte man Prozentsätze relativ zu allen beobachteten 
 Daten wünschen. Daher kann man in den Parameter `all` 
 auf true setzen:
-```{r, eval=FALSE}
+```{r contingency_scale_true, eval=FALSE}
 contingency_table_scale(euro_startups, country_code, status, all = TRUE)
 ```
 Das gibt uns jetzt jedoch keine neuen Erkenntnisse.
@@ -124,7 +116,16 @@ werden wir später testen.
 
 
 ### Graphische Zusammenfassung:
-```{r}
+
+`katws` enthält die folgenden Funktionen, welche Plots erstellen:
+
+* `BARPLOT1()` erzeugt ein klassisches Säulendiagramm.
+* `BARPLOT2()` erzeugt ein Säulendiagramm mit zusätzlichen Facets.
+* `PIECHART()` erzeugt ein Kreisdiagramm.
+* `COUNTPLOT()` erzeugt ein Countplot mit möglichen Parametern `prop` oder `count`
+* `HEATMAPS()` erzeugt eine Heatmap.
+
+```{r barplot_simple}
 BARPLOT1(euro_startups, status, country_code)
 ```
 
@@ -132,7 +133,7 @@ Dieses Säulendiagramm zeigt uns die Anzahl aller erworbenen (`acquired`), aller
 Man erkennt insbesondere, dass `GBR` in allen Kategorien von `status` dominiert.
 Außerdem ist es aus dem Diagramm ersichtlich, dass sehr viele Start-ups weiterhin im Betrieb sind. 
 
-```{r}
+```{r barplot_faceted}
 BARPLOT2(euro_startups, status, country_code)
 ```
 
@@ -140,27 +141,27 @@ In diesem Diagramm erhalten wir neben den gleichen Informationen vom ersten Diag
 Zuerst sind die Prozentsätze von `acquired`, `closed` und `operating` in jedem Land nahezu gleich.
 Außnahmen sind `DEU` und `BEL`, wo sogar einwenig mehr Start-ups den Status `acquired` haben als `closed`.
 
-```{r}
+```{r piechart}
 PIECHART(euro_startups, status)
 ```
 
 Hier sind nochmal klar die Prozentsätze von `acquired`, `closed` und `operating`
 dargestellt.
 
-```{r}
+```{r countplot_prop}
 COUNTPLOT(euro_startups, status, country_code, "prop")
 ```
 
 Dieses Diagramm ist die grafische Darstellung von `contingency_table_scale()`. Es stellt genau die Prozentsätze aller `status`-Werte in jedem Land dar.
 
-```{r}
+```{r countplot_count}
 COUNTPLOT(euro_startups, status, country_code, "count")
 ```
 
 Hier erhalten wir eine grafische Variante, welches uns auch `BARPLOT1()` liefert.
 In diesem Fall kann man auch nur die Informationen aus `BARPLOT1()` herausnehmen, obwohl es visuell sogar schlechter ist.
 
-```{r}
+```{r heatmap}
 HEATMAPS(euro_startups, status, country_code)
 ```
 
@@ -181,7 +182,35 @@ H~1~: sie sind abhängig
 
 
 
-```{r, results = 'hide'}
+```{r startups_independence_plot}
 test_independence(euro_startups, country_code, status, 1000, 1000, TRUE);
 ```
+
+Wir sehen, dass der berechnete Chi-Quadrat-Wert unter der Annahme der Nullhypothese 
+ziemlich nahe an der approximierten Verteilung liegt. Der p-Wert liegt weit über 
+dem 0,05-Signifikanzniveau.
+Daher können wir die Nullhypothese nicht verwerfen.
+
+Um ein weiteres Beispiel zu sehen, sehen wir uns den Datensatz `accidents21` an.
+Wir wollen testen, ob die Unfallschwere von dem Wochentag abhängt, 
+an dem sie sich ereignen. 
+
+H~0~: `accident_severity` und `day_of_week` sind unabhängig \
+H~1~: sie sind abhängig
+
+```{r accidents_independence_plot}
+test_independence(accidents21, accident_severity, day_of_week, 1000, 1000, TRUE);
+```
+
+In diesem Fall sehen wir, dass der berechnete Chi-Quadrat-Wert weit von der 
+Verteilung unter der Nullhypothese entfernt ist und, dass der p-Wert extrem klein
+ist. Also ist die Wahrscheinlichkeit eines Fehlers 1. Art auch extrem klein und 
+daher können wir die Null-Hypothese verwerfen.
+
+Aus den Daten erhalten wir also, dass die Unfallschwere und der Wochentag abhängig 
+zu sein scheinen.
+Eine mögliche Erklärung kann sein, dass am Wochenende in den Städten viel weniger
+Verkehr herrscht und die leichten Unfälle meist zur Hauptverkehrszeit passieren.
+
+
 

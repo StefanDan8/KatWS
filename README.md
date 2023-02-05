@@ -18,15 +18,6 @@ Datensätzen getestet werden:
 - `euro_startups` – Daten über die Start-ups in den Top 8 europäischen
   Ländern nach Anzahl der Startups.
 
-Zusätzlich enthält `katws` Funktionen, welche Plots erstellen:
-
-- `BARPLOT1()` erzeugt ein klassisches Säulendiagramm.
-- `BARPLOT2()` erzeugt ein Säulendiagramm mit zusätzlichen Facets.
-- `PIECHART()` erzeugt ein Kreisdiagramm.
-- `COUNTPLOT()` erzeugt ein Countplot mit möglichen Parametern `prop`
-  oder `count`
-- `HEATMAPS()` erzeugt eine Heatmap.
-
 Um die Funktionalität des Pakets zu veranschaulichen, werden wir den
 Datensatz `euro_startups` analysieren.
 
@@ -173,11 +164,20 @@ wir später testen.
 
 ### Graphische Zusammenfassung:
 
+`katws` enthält die folgenden Funktionen, welche Plots erstellen:
+
+- `BARPLOT1()` erzeugt ein klassisches Säulendiagramm.
+- `BARPLOT2()` erzeugt ein Säulendiagramm mit zusätzlichen Facets.
+- `PIECHART()` erzeugt ein Kreisdiagramm.
+- `COUNTPLOT()` erzeugt ein Countplot mit möglichen Parametern `prop`
+  oder `count`
+- `HEATMAPS()` erzeugt eine Heatmap.
+
 ``` r
 BARPLOT1(euro_startups, status, country_code)
 ```
 
-<img src="man/figures/README-unnamed-chunk-10-1.png" width="100%" />
+<img src="man/figures/README-barplot_simple-1.png" width="100%" />
 
 Dieses Säulendiagramm zeigt uns die Anzahl aller erworbenen
 (`acquired`), aller geschlossenen (`closed`) sowie aller laufenden
@@ -192,7 +192,7 @@ weiterhin im Betrieb sind.
 BARPLOT2(euro_startups, status, country_code)
 ```
 
-<img src="man/figures/README-unnamed-chunk-11-1.png" width="100%" />
+<img src="man/figures/README-barplot_faceted-1.png" width="100%" />
 
 In diesem Diagramm erhalten wir neben den gleichen Informationen vom
 ersten Diagramm außerdem Zusatzinformation: Zuerst sind die Prozentsätze
@@ -204,7 +204,7 @@ Status `acquired` haben als `closed`.
 PIECHART(euro_startups, status)
 ```
 
-<img src="man/figures/README-unnamed-chunk-12-1.png" width="100%" />
+<img src="man/figures/README-piechart-1.png" width="100%" />
 
 Hier sind nochmal klar die Prozentsätze von `acquired`, `closed` und
 `operating` dargestellt.
@@ -213,7 +213,7 @@ Hier sind nochmal klar die Prozentsätze von `acquired`, `closed` und
 COUNTPLOT(euro_startups, status, country_code, "prop")
 ```
 
-<img src="man/figures/README-unnamed-chunk-13-1.png" width="100%" />
+<img src="man/figures/README-countplot_prop-1.png" width="100%" />
 
 Dieses Diagramm ist die grafische Darstellung von
 `contingency_table_scale()`. Es stellt genau die Prozentsätze aller
@@ -223,7 +223,7 @@ Dieses Diagramm ist die grafische Darstellung von
 COUNTPLOT(euro_startups, status, country_code, "count")
 ```
 
-<img src="man/figures/README-unnamed-chunk-14-1.png" width="100%" />
+<img src="man/figures/README-countplot_count-1.png" width="100%" />
 
 Hier erhalten wir eine grafische Variante, welches uns auch `BARPLOT1()`
 liefert. In diesem Fall kann man auch nur die Informationen aus
@@ -233,7 +233,7 @@ liefert. In diesem Fall kann man auch nur die Informationen aus
 HEATMAPS(euro_startups, status, country_code)
 ```
 
-<img src="man/figures/README-unnamed-chunk-15-1.png" width="100%" />
+<img src="man/figures/README-heatmap-1.png" width="100%" />
 
 Heatmaps sind eine visuelle Variante von `COUNTPLOT()`, die ähnliche
 Resultate darstellt. Hier ist das Diagramm nur von wenig Nutzen, da der
@@ -254,6 +254,78 @@ H<sub>1</sub>: sie sind abhängig
 
 ``` r
 test_independence(euro_startups, country_code, status, 1000, 1000, TRUE);
+#> Theoretical approach for the data set:
+#>   X-squared value: 15.290
+#>   degrees of freedom: 14
+#>   p-value: 0.359
 ```
 
-<img src="man/figures/README-unnamed-chunk-16-1.png" width="100%" />
+<img src="man/figures/README-startups_independence_plot-1.png" width="100%" />
+
+    #> Response: country_code (factor)
+    #> Explanatory: status (factor)
+    #> Null Hypothesis: independence
+    #> # A tibble: 1,000 × 2
+    #>    replicate  stat
+    #>        <int> <dbl>
+    #>  1         1  7.97
+    #>  2         2 20.3 
+    #>  3         3 10.2 
+    #>  4         4  6.66
+    #>  5         5 17.8 
+    #>  6         6 11.0 
+    #>  7         7  8.54
+    #>  8         8  5.36
+    #>  9         9  6.46
+    #> 10        10  8.05
+    #> # … with 990 more rows
+
+Wir sehen, dass der berechnete Chi-Quadrat-Wert unter der Annahme der
+Nullhypothese ziemlich nahe an der approximierten Verteilung liegt. Der
+p-Wert liegt weit über dem 0,05-Signifikanzniveau. Daher können wir die
+Nullhypothese nicht verwerfen.
+
+Um ein weiteres Beispiel zu sehen, sehen wir uns den Datensatz
+`accidents21` an. Wir wollen testen, ob die Unfallschwere von dem
+Wochentag abhängt, an dem sie sich ereignen.
+
+H<sub>0</sub>: `accident_severity` und `day_of_week` sind unabhängig  
+H<sub>1</sub>: sie sind abhängig
+
+``` r
+test_independence(accidents21, accident_severity, day_of_week, 1000, 1000, TRUE);
+#> Theoretical approach for the data set:
+#>   X-squared value: 118.731
+#>   degrees of freedom: 12
+#>   p-value: 1.11e-19
+```
+
+<img src="man/figures/README-accidents_independence_plot-1.png" width="100%" />
+
+    #> Response: accident_severity (factor)
+    #> Explanatory: day_of_week (factor)
+    #> Null Hypothesis: independence
+    #> # A tibble: 1,000 × 2
+    #>    replicate  stat
+    #>        <int> <dbl>
+    #>  1         1  9.61
+    #>  2         2  7.29
+    #>  3         3 10.8 
+    #>  4         4  5.90
+    #>  5         5 12.2 
+    #>  6         6 14.4 
+    #>  7         7  9.74
+    #>  8         8 12.2 
+    #>  9         9  9.99
+    #> 10        10 10.6 
+    #> # … with 990 more rows
+
+In diesem Fall sehen wir, dass der berechnete Chi-Quadrat-Wert weit von
+der Verteilung unter der Nullhypothese entfernt ist und, dass der p-Wert
+extrem klein ist. Also ist die Wahrscheinlichkeit eines Fehlers 1. Art
+auch extrem klein und daher können wir die Null-Hypothese verwerfen.
+
+Aus den Daten erhalten wir also, dass die Unfallschwere und der
+Wochentag abhängig zu sein scheinen. Eine mögliche Erklärung kann sein,
+dass am Wochenende in den Städten viel weniger Verkehr herrscht und die
+leichten Unfälle meist zur Hauptverkehrszeit passieren.

@@ -30,6 +30,7 @@
 #'   Whether the accident happened in a rural or urban area
 #'   (Factor, with levels "Urban", "Rural")}
 #' }
+#' @importFrom tibble tibble
 #' @source \url{https://www.data.gov.uk/dataset/cb7ae6f0-4be6-4935-9277-47e5ce24a11f/road-safety-data}
 "accidents21"
 
@@ -54,6 +55,7 @@
 #'   "IRL" = Ireland \cr
 #'   "SWE" = Sweden)}
 #' }
+#' @importFrom tibble tibble
 #' @source The data originates from a bigger dataset,
 #' `Startup Success/Fail Dataset from Crunchbase`, which can be found on kaggle under
 #' the following link:
